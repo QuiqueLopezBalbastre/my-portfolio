@@ -1,53 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tu Nombre - Portfolio</title>
     <meta name="description" content="Portfolio de Tu Nombre, desarrollador de videojuegos." />
-    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="js/script.js" defer></script>
     <!-- Iconos de Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
     <header>
-      <nav>
-        <div class="logo">TuNombre</div>
-        <ul class="nav-links">
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <div class="burger">
-          <div class="linea1"></div>
-          <div class="linea2"></div>
-          <div class="linea3"></div>
-        </div>
-      </nav>
+        <nav>
+            <div class="logo">TuNombre</div>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="burger">
+                <div class="linea1"></div>
+                <div class="linea2"></div>
+                <div class="linea3"></div>
+            </div>
+        </nav>
     </header>
 
-    <section id="hero">
-      <div class="contenedor">
-        <h1>Hola, soy <span class="resaltado">Tu Nombre</span></h1>
-        <h2>Desarrollador de Videojuegos</h2>
-        <p>
-          Creo experiencias interactivas y envolventes utilizando tecnologías modernas.
-        </p>
-        <a href="#contacto" class="boton-cta">Contáctame</a>
-      </div>
+    <section id="inicio">
+        <div class="contenedor">
+            <h1>¡Hola! Soy <span class="resaltado">Quique López Balbastre</span></h1>
+            <p>Desarrollador de videojuegos apasionado por crear experiencias interactivas únicas.</p>
+            <a href="#sobre-mi" class="boton-cta">Conóceme</a>
+        </div>
+    </section>
+    <section id="sobre-mi">
+        <div class="contenedor">
+            <h2>Sobre Mí</h2>
+            <p class="oculto">Soy un desarrollador con formación en HND en Videogame Computing, especializado en
+                programación de gameplay y diseño de sistemas.</p>
+            <p class="oculto">Experiencia con Unreal Engine 5, Unity y desarrollo web. Actualmente, ampliando
+                conocimientos en desarrollo móvil.</p>
+        </div>
+    </section>
+    <div class="mapa-interactivo">
+        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <a href="https://github.com/quiquelopezbalbastre/proyecto-1" target="_blank">
+                <circle class="region" cx="200" cy="150" r="40" />
+            </a>
+            <a href="https://github.com/quiquelopezbalbastre/proyecto-2" target="_blank">
+                <circle class="region" cx="600" cy="180" r="40" />
+            </a>
+            <a href="https://github.com/quiquelopezbalbastre/proyecto-3" target="_blank">
+                <circle class="region" cx="300" cy="400" r="40" />
+            </a>
+            <a href="https://github.com/quiquelopezbalbastre/proyecto-4" target="_blank">
+                <circle class="region" cx="550" cy="450" r="40" />
+            </a>
+        </svg>
+    </div>
+
+    <section id="habilidades">
+        <div class="contenedor">
+            <h2>Habilidades</h2>
+            <div class="habilidad">
+                <h3>C#</h3>
+                <div class="barra">
+                    <div class="progreso" data-porcentaje="90%"></div>
+                </div>
+            </div>
+            <!-- Agrega más habilidades de manera similar -->
+        </div>
+    </section>
+    <section id="contacto">
+        <div class="contenedor">
+            <h2>Contacto</h2>
+            <form id="formulario-contacto">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="mensaje-exito" style="display:none;">¡Mensaje enviado con éxito!</p>
+        </div>
     </section>
 
-    <!-- Secciones adicionales como Sobre mí, Proyectos, Habilidades, Contacto -->
 
     <footer>
-      <div class="contenedor">
-        <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
-      </div>
+        <div class="contenedor">
+            <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
+        </div>
     </footer>
-  </body>
+</body>
+
 </html>
