@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tu Nombre - Portfolio</title>
-    <meta name="description" content="Portfolio de Tu Nombre, desarrollador de videojuegos." />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/script.js" defer></script>
-    <!-- Iconos de Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Nombre - Portfolio Interactivo</title>
+    <meta name="description" content="Portfolio interactivo de Tu Nombre, desarrollador de videojuegos con Unreal Engine 5.">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/map-styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
     <header>
         <nav>
-            <div class="logo">TuNombre</div>
+            <div class="logo">DevPortfolio</div>
             <ul class="nav-links">
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
             <div class="burger">
                 <div class="linea1"></div>
@@ -30,70 +33,104 @@
         </nav>
     </header>
 
-    <section id="inicio">
-        <div class="contenedor">
-            <h1>¡Hola! Soy <span class="resaltado">Quique López Balbastre</span></h1>
-            <p>Desarrollador de videojuegos apasionado por crear experiencias interactivas únicas.</p>
-            <a href="#sobre-mi" class="boton-cta">Conóceme</a>
-        </div>
-    </section>
-    <section id="sobre-mi">
-        <div class="contenedor">
-            <h2>Sobre Mí</h2>
-            <p class="oculto">Soy un desarrollador con formación en HND en Videogame Computing, especializado en
-                programación de gameplay y diseño de sistemas.</p>
-            <p class="oculto">Experiencia con Unreal Engine 5, Unity y desarrollo web. Actualmente, ampliando
-                conocimientos en desarrollo móvil.</p>
-        </div>
-    </section>
-    <div class="mapa-interactivo">
-        <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-            <a href="https://github.com/quiquelopezbalbastre/proyecto-1" target="_blank">
-                <circle class="region" cx="200" cy="150" r="40" />
-            </a>
-            <a href="https://github.com/quiquelopezbalbastre/proyecto-2" target="_blank">
-                <circle class="region" cx="600" cy="180" r="40" />
-            </a>
-            <a href="https://github.com/quiquelopezbalbastre/proyecto-3" target="_blank">
-                <circle class="region" cx="300" cy="400" r="40" />
-            </a>
-            <a href="https://github.com/quiquelopezbalbastre/proyecto-4" target="_blank">
-                <circle class="region" cx="550" cy="450" r="40" />
-            </a>
-        </svg>
-    </div>
-
-    <section id="habilidades">
-        <div class="contenedor">
-            <h2>Habilidades</h2>
-            <div class="habilidad">
-                <h3>C#</h3>
-                <div class="barra">
-                    <div class="progreso" data-porcentaje="90%"></div>
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Explora Hispania Romana</h1>
+                <p class="subtitle">Cada región representa un proyecto único ambientado en la península ibérica antigua</p>
+                <div class="instructions">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <span>Haz clic en cualquier región para explorar su proyecto histórico</span>
                 </div>
             </div>
-            <!-- Agrega más habilidades de manera similar -->
-        </div>
-    </section>
-    <section id="contacto">
-        <div class="contenedor">
-            <h2>Contacto</h2>
-            <form id="formulario-contacto">
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
-                <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-            <p id="mensaje-exito" style="display:none;">¡Mensaje enviado con éxito!</p>
-        </div>
-    </section>
+        </section>
 
+        <section id="interactive-map">
+            <div class="map-container">
+                <svg id="world-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- GALLAECIA (Noroeste - verde) -->
+                    <circle id="gallaecia" class="continent" cx="180" cy="80" r="70" 
+                            data-project="rpg-celta"
+                            data-title="RPG Celta: Gallaecia"
+                            data-description="Aventura RPG ambientada en los pueblos celtas del noroeste hispano">
+                    </circle>
+
+                    <!-- TARRACONENSIS (Noreste - rosa/púrpura) -->
+                    <circle id="tarraconensis" class="continent" cx="500" cy="120" r="70" 
+                            data-project="strategy-romano"
+                            data-title="Estrategia Romana: Tarraconensis"
+                            data-description="RTS sobre la conquista romana de la costa mediterránea">
+                    </circle>
+
+                    <!-- CARTAGINENSIS (Centro-este - amarillo) -->
+                    <circle id="cartaginensis" class="continent" cx="450" cy="310" r="90" 
+                            data-project="tactical-punico"
+                            data-title="Guerra Púnica: Cartaginensis"
+                            data-description="Simulador táctico de las guerras entre Roma y Cartago">
+                    </circle>
+
+                    <!-- LUSITANIA (Oeste - naranja/salmón) -->
+                    <circle id="lusitania" class="continent" cx="120" cy="300" r="70" 
+                            data-project="action-viriato"
+                            data-title="Viriato: El Último Guerrero"
+                            data-description="Action-adventure sobre la resistencia lusitana contra Roma">
+                    </circle>
+
+                    <!-- BAETICA (Sur - gris/azul) -->
+                    <circle id="baetica" class="continent" cx="250" cy="440" r="75" 
+                            data-project="economic-hispalis"
+                            data-title="Comercio en Hispalis"
+                            data-description="Simulador económico del comercio en la Bética romana">
+                    </circle>
+
+                    <!-- ISLAS BALEARES (Pequeñas islas amarillas) -->
+                    <circle id="baleares" class="continent" cx="700" cy="280" r="25" 
+                            data-project="naval-baleares"
+                            data-title="Navegación Balear"
+                            data-description="Simulador naval de las rutas comerciales baleares">
+                    </circle>
+
+                    <!-- Zonas de texto informativas (invisibles pero clickeables) -->
+                    <text x="180" y="85" text-anchor="middle" class="region-label" pointer-events="none">GALLAECIA</text>
+                    <text x="500" y="125" text-anchor="middle" class="region-label" pointer-events="none">TARRACONENSIS</text>
+                    <text x="450" y="315" text-anchor="middle" class="region-label" pointer-events="none">CARTAGINENSIS</text>
+                    <text x="120" y="305" text-anchor="middle" class="region-label" pointer-events="none">LUSITANIA</text>
+                    <text x="250" y="445" text-anchor="middle" class="region-label" pointer-events="none">BAETICA</text>
+                    <text x="700" y="285" text-anchor="middle" class="region-label" pointer-events="none">BALEARES</text>
+                </svg>
+
+                <!-- Tooltip -->
+                <div id="tooltip" class="tooltip">
+                    <h3 id="tooltip-title"></h3>
+                    <p id="tooltip-description"></p>
+                    <span class="tooltip-cta">Clic para ver proyecto</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para mostrar información del proyecto -->
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-body">
+                    <!-- El contenido se carga dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </main>
 
     <footer>
-        <div class="contenedor">
-            <p>&copy; 2025 Tu Nombre. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>&copy; 2025 Tu Nombre. Desarrollador de Videojuegos - Unreal Engine 5</p>
         </div>
     </footer>
-</body>
 
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/map-interactions.js"></script>
+    <script src="js/tooltip-system.js"></script>
+    <script src="js/modal-system.js"></script>
+    <script src="js/project-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>

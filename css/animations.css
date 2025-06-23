@@ -1,0 +1,214 @@
+/* ===== ANIMATIONS ===== */
+
+/* Pulse animation for active continents */
+@keyframes pulse {
+    0% {
+        filter: drop-shadow(0 8px 16px rgba(255, 0, 128, 0.4)) 
+                drop-shadow(0 0 20px rgba(255, 0, 128, 0.6));
+    }
+    50% {
+        filter: drop-shadow(0 12px 24px rgba(255, 0, 128, 0.6)) 
+                drop-shadow(0 0 30px rgba(255, 0, 128, 0.8));
+    }
+    100% {
+        filter: drop-shadow(0 8px 16px rgba(255, 0, 128, 0.4)) 
+                drop-shadow(0 0 20px rgba(255, 0, 128, 0.6));
+    }
+}
+
+/* Shimmer effect for tooltip CTA */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.tooltip-cta {
+    background: linear-gradient(90deg, 
+        var(--primary-color) 0%, 
+        var(--secondary-color) 25%, 
+        var(--accent-color) 50%, 
+        var(--secondary-color) 75%, 
+        var(--primary-color) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Modal fade in animation */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Floating animation for instructions */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.instructions {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Glow effect for continent hover */
+@keyframes continentGlow {
+    0% {
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    }
+    100% {
+        filter: drop-shadow(0 8px 16px rgba(0, 212, 255, 0.4)) 
+                drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+    }
+}
+
+/* Smooth reveal animation for modal content */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: slideUp 0.6s ease forwards;
+}
+
+/* Staggered animation for project features */
+.project-features li {
+    opacity: 0;
+    animation: slideUp 0.4s ease forwards;
+}
+
+.project-features li:nth-child(1) { animation-delay: 0.1s; }
+.project-features li:nth-child(2) { animation-delay: 0.2s; }
+.project-features li:nth-child(3) { animation-delay: 0.3s; }
+.project-features li:nth-child(4) { animation-delay: 0.4s; }
+.project-features li:nth-child(5) { animation-delay: 0.5s; }
+
+/* Loading spinner for project content */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Typewriter effect for project titles */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 1.5s steps(40, end);
+}
+
+/* Button hover animations */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Continent click ripple effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.continent-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.6) 0%, transparent 70%);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+/* Navigation link active state animation */
+@keyframes linkActive {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.nav-links a.active {
+    animation: linkActive 0.3s ease;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .continent {
+        transition: none;
+    }
+    
+    .tooltip {
+        transition: none;
+    }
+    
+    .instructions {
+        animation: none;
+    }
+}
