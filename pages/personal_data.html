@@ -1,0 +1,221 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castra Quique - Información Personal</title>
+    <link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+    <a href="../index.html" class="back-button">← Regresar al Mapa</a>
+    
+    <div class="tent-container">
+        <header class="header">
+            <h1>CASTRA QUIQUE</h1>
+            <p class="subtitle">Informes del General de Campaña</p>
+            <div class="divider"></div>
+        </header>
+
+        <div class="command-interface">
+            <div class="candle"></div>
+            
+            <!-- Botones de secciones -->
+            <div class="section-buttons">
+                <button class="section-btn active" data-section="status">Status Militis</button>
+                <button class="section-btn" data-section="arma">Arma et Instrumenta</button>
+                <button class="section-btn" data-section="disciplinae">Disciplinae</button>
+                <button class="section-btn" data-section="strategiae">Strategiae</button>
+            </div>
+
+            <!-- Tablilla díptica -->
+            <div class="tabula-diptica">
+                <div class="tabula-panel left">
+                    <div class="wax-surface"></div>
+                    <div class="tabula-content" id="left-content">
+                        <!-- Contenido izquierdo -->
+                    </div>
+                </div>
+
+                <div class="hinge">
+                    <div class="hinge-piece"></div>
+                    <div class="hinge-piece"></div>
+                    <div class="hinge-piece"></div>
+                </div>
+
+                <div class="tabula-panel right">
+                    <div class="wax-surface"></div>
+                    <div class="tabula-content" id="right-content">
+                        <!-- Contenido derecho -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="stylus"></div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de fallback embebidos
+        const tabulaeData = {
+            "status": {
+                "header": "Status Militis",
+                "subtitle": "Estado del Soldado",
+                "left_content": {
+                    "Veteranus": "5+ años desarrollando videojuegos",
+                    "Specialitas": "Gameplay Programming & Systems Design",
+                    "Gradus": "Senior Developer con HND en Videogame Computing"
+                },
+                "right_content": {
+                    "Focus Operandi": "Unreal Engine 5, experiencias AAA e indie",
+                    "Missio Prima": "Crear experiencias interactivas únicas",
+                    "Regio": "Madrid, Hispania"
+                }
+            },
+            "arma": {
+                "header": "Arma et Instrumenta",
+                "subtitle": "Armas y Herramientas",
+                "left_content": {
+                    "Linguae Primae": "C++, C#, Blueprint Visual Scripting",
+                    "Machinae Belli": "Unreal Engine 5, Unity, Visual Studio",
+                    "Instrumenta Auxiliaria": "Git, Perforce, Jira"
+                },
+                "right_content": {
+                    "Systema Operandi": "Windows, Linux deployment",
+                    "Artes Novae": "VR/AR Development, Mobile",
+                    "Frameworks": "Custom game systems, Tools development"
+                }
+            },
+            "disciplinae": {
+                "header": "Disciplinae Militares",
+                "subtitle": "Entrenamiento Militar",
+                "left_content": {
+                    "Educatio Prima": "HND in Videogame Computing",
+                    "Certificatio": "Epic Games Unreal Engine Certified",
+                    "Studia Continua": "Advanced C++, Game Architecture"
+                },
+                "right_content": {
+                    "Formatio Moderna": "VR/AR Development, Mobile Optimization",
+                    "Cursus Bellicus": "Performance optimization, Scalable systems",
+                    "Magistri": "Industry veterans, Online academies"
+                }
+            },
+            "strategiae": {
+                "header": "Strategiae Belli",
+                "subtitle": "Estrategias de Guerra",
+                "left_content": {
+                    "Philosophia Prima": "Performance-first development",
+                    "Methodologia": "Clean Code, Scalable Architecture",
+                    "Tacticus": "Rapid prototyping, iterative design"
+                },
+                "right_content": {
+                    "Motivatio": "Crear experiencias inmersivas únicas",
+                    "Approach": "Player-centric design thinking",
+                    "Innovation": "Emerging tech integration, Future-ready solutions"
+                }
+            }
+        };
+
+        let currentSection = 'status';
+
+        function renderContent(sectionKey) {
+            const data = tabulaeData[sectionKey];
+            const leftContent = document.getElementById('left-content');
+            const rightContent = document.getElementById('right-content');
+
+            // Contenido izquierdo
+            let leftHTML = `
+                <div class="content-header">
+                    <div class="content-title">${data.header}</div>
+                    <div class="content-subtitle">${data.subtitle}</div>
+                </div>
+                <div class="content-body">
+            `;
+
+            Object.keys(data.left_content).forEach(key => {
+                leftHTML += `
+                    <div class="info-line">
+                        <div class="info-label">${key}:</div>
+                        <div class="info-value">${data.left_content[key]}</div>
+                    </div>
+                `;
+            });
+
+            leftHTML += '</div>';
+
+            // Contenido derecho
+            let rightHTML = `
+                <div class="content-header">
+                    <div class="content-title">Continuatio</div>
+                    <div class="content-subtitle">Información Adicional</div>
+                </div>
+                <div class="content-body">
+            `;
+
+            Object.keys(data.right_content).forEach(key => {
+                rightHTML += `
+                    <div class="info-line">
+                        <div class="info-label">${key}:</div>
+                        <div class="info-value">${data.right_content[key]}</div>
+                    </div>
+                `;
+            });
+
+            rightHTML += '</div>';
+
+            // Aplicar contenido con animación
+            leftContent.innerHTML = leftHTML;
+            rightContent.innerHTML = rightHTML;
+            
+            leftContent.classList.add('content-fade-in');
+            rightContent.classList.add('content-fade-in');
+
+            setTimeout(() => {
+                leftContent.classList.remove('content-fade-in');
+                rightContent.classList.remove('content-fade-in');
+            }, 600);
+        }
+
+        function switchSection(sectionKey) {
+            if (currentSection === sectionKey) return;
+
+            // Actualizar botones
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${sectionKey}"]`).classList.add('active');
+
+            currentSection = sectionKey;
+            renderContent(sectionKey);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar contenido inicial
+            renderContent(currentSection);
+
+            // Event listeners para botones
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    switchSection(btn.dataset.section);
+                });
+            });
+
+            // Efectos de ambiente mejorados
+            document.addEventListener('mousemove', function(e) {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                const tabulae = document.querySelectorAll('.tabula-panel');
+                tabulae.forEach((tabula, index) => {
+                    const moveX = (mouseX - 0.5) * 5;
+                    const moveY = (mouseY - 0.5) * 2;
+                    
+                    if (index === 0) {
+                        tabula.style.transform = `perspective(1000px) rotateY(${-2 + moveX}deg) rotateX(${moveY}deg)`;
+                    } else {
+                        tabula.style.transform = `perspective(1000px) rotateY(${2 + moveX}deg) rotateX(${moveY}deg)`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

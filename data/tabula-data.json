@@ -1,0 +1,42 @@
+{
+  "status": {
+    "header": "Status Militis",
+    "subtitle": "Estado del Soldado",
+    "content": {
+      "Veteranus": "5+ años desarrollando videojuegos",
+      "Specialitas": "Gameplay Programming & Systems Design",
+      "Gradus": "Senior Developer con HND en Videogame Computing",
+      "Focus Operandi": "Unreal Engine 5, experiencias AAA e indie"
+    }
+  },
+  "arma": {
+    "header": "Arma et Instrumenta",
+    "subtitle": "Armas y Herramientas",
+    "content": {
+      "Linguae Primae": "C++, C#, Blueprint Visual Scripting",
+      "Machinae Belli": "Unreal Engine 5, Unity, Visual Studio",
+      "Instrumenta Auxiliaria": "Git, Perforce, Jira",
+      "Systema Operandi": "Windows, Linux deployment"
+    }
+  },
+  "disciplinae": {
+    "header": "Disciplinae Militares",
+    "subtitle": "Entrenamiento Militar",
+    "content": {
+      "Educatio Prima": "HND in Videogame Computing",
+      "Certificatio": "Epic Games Unreal Engine Certified",
+      "Studia Continua": "Advanced C++, Game Architecture Patterns",
+      "Formatio Moderna": "VR/AR Development, Mobile Optimization"
+    }
+  },
+  "strategiae": {
+    "header": "Strategiae Belli",
+    "subtitle": "Estrategias de Guerra",
+    "content": {
+      "Philosophia Prima": "Performance-first development",
+      "Methodologia": "Clean Code, Scalable Architecture",
+      "Tacticus": "Rapid prototyping, iterative design",
+      "Motivatio": "Crear experiencias inmersivas únicas"
+    }
+  }
+}
