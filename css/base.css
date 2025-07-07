@@ -270,43 +270,84 @@ em {
     font-style: italic;
 }
 
-/* Responsive para tipografía */
+/* Responsive para navegación */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background: linear-gradient(180deg, var(--bg-primary), var(--bg-tent));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        border-left: 3px solid var(--bronze);
+        backdrop-filter: blur(15px);
+        z-index: 999;
     }
-    
-    h2 {
+
+    .nav-links.nav-activo {
+        transform: translateX(0%);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        margin: 15px 0;
+        padding: 15px 30px;
+        width: 80%;
+        text-align: center;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    #hero {
+        min-height: 45vh;
+        padding-top: 100px; /* Más espacio para nav en móvil */
+    }
+
+    #mapa-interactivo {
+        min-height: 85vh;
+        padding: 20px 10px;
+    }
+
+    .map-container {
+        height: 400px !important;
+        padding: var(--spacing-md);
+    }
+
+    #world-map {
+        min-height: 300px;
+    }
+
+    .header h1 {
         font-size: 2rem;
-        letter-spacing: 1px;
     }
-    
-    h3 {
-        font-size: 1.3rem;
-    }
-    
-    .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
-    }
-    
-    p {
+
+    .header .subtitle {
         font-size: 1rem;
-        text-align: left;
-        padding: 0 10px;
     }
-    
-    p.centered,
-    p.instructions {
-        padding: 12px 20px;
-        font-size: 0.95rem;
+
+    .instructions {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
-    
-    blockquote {
-        font-size: 1.1rem;
-        padding: 20px;
-        margin: 20px 10px;
+
+    .region {
+        r: 30;
+    }
+
+    .region-label {
+        font-size: 10px;
     }
 }
 * {
@@ -908,7 +949,7 @@ button:hover {
     position: relative;
     width: 800px;
     height: 600px;
-    background-image: url('../images/Hispania.jpg');
+    background-image: url('images/FantasyMap_1.webp');
     background-size: cover;
     background-position: center;
     border: 5px solid var(--bronze);
@@ -1166,10 +1207,11 @@ nav {
     border-radius: 2px;
 }
 
-/* Secciones principales */
+/* Secciones principales con tamaños específicos */
 #inicio {
     padding-top: 120px;
-    min-height: 100vh;
+    min-height: 50vh; /* Reducido de 100vh a 50vh */
+    max-height: 60vh; /* Altura máxima limitada */
     display: flex;
     align-items: center;
     background: 
@@ -1177,6 +1219,19 @@ nav {
         var(--bg-primary);
 }
 
+/* Section del mapa - Más grande */
+#hero,
+#proyectos,
+section:has(.mapa-interactivo) {
+    min-height: 90vh; /* Aumentado para dar más espacio al mapa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 40px 20px; /* Reducido padding para aprovechar mejor el espacio */
+}
+
+/* Otras secciones con altura estándar */
 section {
     min-height: 80vh;
     padding: 80px 0;
@@ -1191,6 +1246,83 @@ section::before {
     right: 0;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--bronze), transparent);
+}
+
+/* Contenedores más compactos para la sección de inicio */
+#inicio .portfolio-container,
+#inicio .tent-container,
+#inicio .contenedor {
+    padding: 20px; /* Reducido de 40px */
+    justify-content: center;
+    gap: 15px; /* Espaciado menor entre elementos */
+}
+
+/* Títulos más compactos en la sección de inicio */
+#inicio h1 {
+    margin-bottom: 10px; /* Reducido de 15px */
+}
+
+#inicio .subtitle {
+    margin-bottom: 20px; /* Reducido de 25px */
+}
+
+#inicio .boton-cta {
+    margin-top: 15px; /* Reducido espaciado superior */
+}
+
+/* Mapa con más espacio disponible */
+.mapa-interactivo {
+    margin: 20px auto; /* Reducido de 40px para aprovechar mejor el espacio */
+    display: block;
+    width: 100%;
+    max-width: 900px; /* Aumentado de 800px */
+    height: 500px; /* Altura fija más grande */
+}
+
+/* Contenedor del mapa optimizado */
+section:has(.mapa-interactivo) .portfolio-container,
+section:has(.mapa-interactivo) .contenedor {
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px; /* Más ancho para el mapa */
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    #inicio {
+        min-height: 40vh; /* Aún más pequeño en móvil */
+        max-height: 50vh;
+        padding-top: 100px;
+    }
+    
+    #hero,
+    #proyectos,
+    section:has(.mapa-interactivo) {
+        min-height: 80vh; /* Ajustado para móvil */
+        padding: 20px 10px;
+    }
+    
+    .mapa-interactivo {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        margin: 15px auto;
+    }
+    
+    #inicio .portfolio-container,
+    #inicio .tent-container,
+    #inicio .contenedor {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    #inicio h1 {
+        margin-bottom: 8px;
+    }
+    
+    #inicio .subtitle {
+        margin-bottom: 15px;
+    }
 }
 
 /* Contenido sobre mí */
@@ -1359,7 +1491,463 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive para navegación */
+/* Map Container - Ocupa 100% del div padre */
+.map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: var(--gradient-surface);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    background: 
+        /* Textura de madera */
+        linear-gradient(135deg, var(--wood-primary) 0%, var(--wood-secondary) 50%, var(--wood-dark) 100%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath d='M0 0 L40 0 L40 2 L0 2 Z' fill='%23000'/%3E%3Cpath d='M0 10 L40 10 L40 12 L0 12 Z' fill='%23000'/%3E%3Cpath d='M0 20 L40 20 L40 22 L0 22 Z' fill='%23000'/%3E%3C/g%3E%3C/svg%3E");
+    border: 4px solid var(--bronze);
+}
+
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--gold-secondary), var(--bronze), var(--gold-secondary));
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* SVG del mapa */
+#world-map {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.2));
+}
+
+/* Modal - Estilo romano consistente */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: 
+        linear-gradient(135deg, var(--wood-primary) 0%, var(--wood-secondary) 50%, var(--wood-dark) 100%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath d='M0 0 L40 0 L40 2 L0 2 Z' fill='%23000'/%3E%3Cpath d='M0 10 L40 10 L40 12 L0 12 Z' fill='%23000'/%3E%3Cpath d='M0 20 L40 20 L40 22 L0 22 Z' fill='%23000'/%3E%3C/g%3E%3C/svg%3E");
+    border: 4px solid var(--bronze);
+    border-radius: 12px;
+    padding: 0;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease-out;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--gold-secondary), var(--bronze), var(--gold-secondary));
+    border-radius: 16px;
+    z-index: -1;
+}
+
+/* Botón de cierre del modal */
+.close {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-md);
+    color: var(--text-gold);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: var(--transition-fast);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--wood-dark), var(--wood-primary));
+    border: 2px solid var(--bronze);
+    box-shadow: 0 4px 8px var(--shadow-primary);
+}
+
+.close:hover {
+    color: var(--gold-light);
+    background: linear-gradient(145deg, var(--bronze), var(--gold-secondary));
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px var(--shadow-primary);
+}
+
+/* Cuerpo del modal */
+#modal-body {
+    padding: var(--spacing-xl);
+    position: relative;
+    color: var(--text-white);
+    font-family: 'EB Garamond', serif;
+    line-height: 1.6;
+}
+
+/* Ajustes específicos para sections */
+/* Primera sección (hero) - Más pequeña, solo saludo */
+#hero {
+    min-height: 50vh; /* Reducido considerablemente */
+    max-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        var(--bg-primary);
+}
+
+#hero .container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#hero h1 {
+    margin-bottom: 10px;
+}
+
+#hero .subtitle {
+    margin-bottom: 20px;
+}
+
+#hero .instructions {
+    margin-bottom: 0;
+}
+
+/* Segunda sección (mapa) - Más grande */
+#mapa-interactivo {
+    min-height: 90vh; /* Mucho más grande para el mapa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+#mapa-interactivo .map-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%; /* Altura fija para mejor control */
+    margin: 0 auto;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: 
+        linear-gradient(135deg, var(--wood-primary) 0%, var(--wood-secondary) 50%, var(--wood-dark) 100%),
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.1'%3E%3Cpath d='M0 0 L40 0 L40 2 L0 2 Z' fill='%23000'/%3E%3Cpath d='M0 10 L40 10 L40 12 L0 12 Z' fill='%23000'/%3E%3Cpath d='M0 20 L40 20 L40 22 L0 22 Z' fill='%23000'/%3E%3C/g%3E%3C/svg%3E");
+    border: 4px solid var(--bronze);
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.4s ease-out;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--gold-secondary), var(--bronze), var(--gold-secondary));
+    border-radius: 16px;
+    z-index: -1;
+}
+
+/* Header del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--bronze);
+}
+
+.modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px var(--shadow-secondary);
+    margin: 0;
+}
+
+.modal-close {
+    background: linear-gradient(145deg, var(--wood-dark), var(--wood-primary));
+    border: 2px solid var(--bronze);
+    color: var(--text-gold);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px var(--shadow-secondary);
+}
+
+.modal-close:hover {
+    background: linear-gradient(145deg, var(--bronze), var(--gold-secondary));
+    color: var(--wood-dark);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px var(--shadow-primary);
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    color: var(--text-white);
+    font-family: 'EB Garamond', serif;
+    line-height: 1.6;
+}
+
+.modal-body h3 {
+    color: var(--gold-primary);
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-align: left;
+}
+
+/* Metadatos del proyecto */
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid var(--bronze);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--bronze);
+    font-size: 0.9rem;
+}
+
+.meta-icon {
+    color: var(--gold-primary);
+    font-size: 1rem;
+}
+
+/* Estados del proyecto */
+.project-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
+.status-completed {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.status-development {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--wood-dark);
+}
+
+.status-planning {
+    background: linear-gradient(135deg, var(--bronze), #B8860B);
+    color: white;
+}
+
+/* Tecnologías utilizadas */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.tech-tag {
+    background: linear-gradient(135deg, var(--wood-dark), var(--wood-primary));
+    color: var(--gold-light);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--bronze);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.5px;
+}
+
+/* Footer del modal */
+.modal-footer {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.modal-btn {
+    background: linear-gradient(145deg, var(--wood-primary), var(--wood-dark));
+    color: var(--text-gold);
+    border: 2px solid var(--bronze);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-btn:hover {
+    background: linear-gradient(145deg, var(--gold-secondary), var(--gold-primary));
+    color: var(--wood-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-primary);
+}
+
+.modal-btn.primary {
+    background: linear-gradient(145deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--wood-dark);
+}
+
+.modal-btn.primary:hover {
+    background: linear-gradient(145deg, var(--gold-light), var(--gold-primary));
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsive para modales */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 20px;
+        max-height: 90vh;
+    }
+    
+    .modal-title {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
