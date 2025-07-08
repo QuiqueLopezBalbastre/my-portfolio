@@ -1,4 +1,4 @@
-// ===== MAIN APPLICATION CONTROLLER =====
+// ===== MAIN APPLICATION CONTROLLER - INICIALIZACIÓN CORREGIDA =====
 
 class PortfolioApp {
     constructor() {
@@ -18,7 +18,7 @@ class PortfolioApp {
             // Show loading indicator
             this.showLoadingIndicator();
             
-            // Initialize core systems
+            // ORDEN CRÍTICO: Inicializar sistemas en orden de dependencia
             await this.initializeManagers();
             
             // Setup global event listeners
@@ -89,38 +89,81 @@ class PortfolioApp {
     }
     
     async initializeManagers() {
-        // Initialize managers in order of dependency
+        console.log('Inicializando managers en orden de dependencia...');
         
         // 1. Navigation (no dependencies)
         if (typeof NavigationManager !== 'undefined') {
             this.managers.navigation = new NavigationManager();
             window.navigationManager = this.managers.navigation;
+            console.log('✓ NavigationManager inicializado');
         }
         
         // 2. Tooltip system (no dependencies)
         if (typeof TooltipManager !== 'undefined') {
             this.managers.tooltip = new TooltipManager();
             window.tooltipManager = this.managers.tooltip;
-            
-            // Preload tooltip content if project data is available
-            if (window.projectData) {
-                this.managers.tooltip.preloadTooltipContent(window.projectData);
-            }
+            console.log('✓ TooltipManager inicializado');
         }
         
-        // 3. Modal system (no dependencies)
+        // 3. Modal system (no dependencies) - DEBE cargar JSON aquí
         if (typeof ModalManager !== 'undefined') {
             this.managers.modal = new ModalManager();
             window.modalManager = this.managers.modal;
+            
+            // CRÍTICO: Esperar a que el modal manager cargue los datos del JSON
+            await this.waitForModalManagerInit();
+            console.log('✓ ModalManager inicializado con datos JSON');
         }
         
-        // 4. Map interactions (depends on tooltip and modal)
+        // 4. Map interactions (depends on modal with JSON data loaded)
         if (typeof MapInteractionManager !== 'undefined') {
             this.managers.mapInteractions = new MapInteractionManager();
             window.mapManager = this.managers.mapInteractions;
+            
+            // CRÍTICO: Esperar a que el map manager cargue los datos
+            await this.waitForMapManagerInit();
+            console.log('✓ MapInteractionManager inicializado con datos JSON');
         }
         
-        console.log('Managers initialized:', Object.keys(this.managers));
+        console.log('Todos los managers inicializados:', Object.keys(this.managers));
+    }
+    
+    // Esperar a que el modal manager termine de cargar datos JSON
+    async waitForModalManagerInit() {
+        const maxAttempts = 50; // 5 segundos máximo
+        let attempts = 0;
+        
+        while (attempts < maxAttempts) {
+            if (this.managers.modal.projectsData) {
+                console.log('Modal manager tiene datos cargados');
+                return;
+            }
+            
+            console.log(`Esperando datos del modal manager... (${attempts + 1}/${maxAttempts})`);
+            await new Promise(resolve => setTimeout(resolve, 100));
+            attempts++;
+        }
+        
+        console.warn('Timeout esperando datos del modal manager');
+    }
+    
+    // Esperar a que el map manager termine de cargar datos JSON
+    async waitForMapManagerInit() {
+        const maxAttempts = 50; // 5 segundos máximo
+        let attempts = 0;
+        
+        while (attempts < maxAttempts) {
+            if (this.managers.mapInteractions.projectsData) {
+                console.log('Map manager tiene datos cargados');
+                return;
+            }
+            
+            console.log(`Esperando datos del map manager... (${attempts + 1}/${maxAttempts})`);
+            await new Promise(resolve => setTimeout(resolve, 100));
+            attempts++;
+        }
+        
+        console.warn('Timeout esperando datos del map manager');
     }
     
     setupGlobalEvents() {
@@ -200,16 +243,8 @@ class PortfolioApp {
     }
     
     preloadCriticalResources() {
-        // Preload project images
-        if (window.projectData) {
-            Object.values(window.projectData).forEach(project => {
-                if (project.images && project.images.length > 0) {
-                    // Preload the first image of each project
-                    const img = new Image();
-                    img.src = project.images[0].url;
-                }
-            });
-        }
+        // Ya no precargar desde window.projectData, usar el sistema dinámico
+        console.log('Preload de recursos críticos completado');
     }
     
     setupServiceWorker() {
@@ -249,7 +284,7 @@ class PortfolioApp {
         const skipLinks = document.createElement('div');
         skipLinks.className = 'skip-links';
         skipLinks.innerHTML = `
-            <a href="#interactive-map" class="skip-link">Saltar al mapa interactivo</a>
+            <a href="#mapa-interactivo" class="skip-link">Saltar al mapa interactivo</a>
             <a href="#hero" class="skip-link">Saltar al contenido principal</a>
         `;
         
@@ -345,25 +380,20 @@ class PortfolioApp {
                 }
             }
             
-            // Number keys 1-7 - highlight corresponding continent
-            if (e.key >= '1' && e.key <= '7') {
-                const continentMap = {
-                    '1': 'north-america',
-                    '2': 'south-america', 
-                    '3': 'europe',
-                    '4': 'africa',
-                    '5': 'asia',
-                    '6': 'oceania',
-                    '7': 'antarctica'
+            // Number keys 1-6 - highlight corresponding region
+            if (e.key >= '1' && e.key <= '6') {
+                const regionMap = {
+                    '1': 'gallaecia',
+                    '2': 'tarraconensis',
+                    '3': 'cartaginensis',
+                    '4': 'lusitania',
+                    '5': 'baetica',
+                    '6': 'baleares'
                 };
                 
-                const continentId = continentMap[e.key];
-                const projectId = Object.keys(window.projectData || {}).find(id => 
-                    window.projectData[id].continent === continentId
-                );
-                
-                if (projectId && this.managers.mapInteractions) {
-                    this.managers.mapInteractions.highlightContinent(projectId);
+                const regionId = regionMap[e.key];
+                if (regionId && this.managers.mapInteractions) {
+                    this.managers.mapInteractions.highlightContinent(regionId);
                 }
             }
         });
@@ -517,6 +547,21 @@ class PortfolioApp {
     getPerformanceMetrics() {
         return { ...this.performanceMetrics };
     }
+    
+    // Método para recargar datos JSON durante desarrollo
+    async reloadAllProjectData() {
+        console.log('Recargando todos los datos de proyectos...');
+        
+        if (this.managers.modal) {
+            await this.managers.modal.reloadProjectsData();
+        }
+        
+        if (this.managers.mapInteractions) {
+            await this.managers.mapInteractions.reloadProjectsData();
+        }
+        
+        console.log('Todos los datos recargados exitosamente');
+    }
 }
 
 // Initialize app when DOM is ready
@@ -535,3 +580,22 @@ initApp();
 
 // Export for debugging
 window.PortfolioApp = PortfolioApp;
+
+// Función global para debugging durante desarrollo
+window.debugProjects = async () => {
+    console.log('=== DEBUG PROJECT DATA ===');
+    
+    if (window.modalManager) {
+        console.log('Modal Manager projects:', window.modalManager.getAllProjects());
+    }
+    
+    if (window.mapManager) {
+        console.log('Map Manager projects:', window.mapManager.getAllProjects());
+    }
+    
+    if (window.portfolioApp) {
+        await window.portfolioApp.reloadAllProjectData();
+    }
+    
+    console.log('=== END DEBUG ===');
+};

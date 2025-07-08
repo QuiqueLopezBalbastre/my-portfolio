@@ -1,0 +1,365 @@
+/* ===== MODAL STYLES MEJORADO PARA LEGIBILIDAD ===== */
+
+/* Modal base - Sin blur excesivo */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Más opaco para mejor contraste */
+    /* backdrop-filter: blur(10px); REMOVIDO - causaba blur innecesario */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.show,
+.modal.active {
+    display: flex;
+}
+
+/* Contenido del modal - Fondo más sólido y contrastado */
+.modal-content {
+    background: 
+        /* Gradiente más sólido y oscuro para mejor legibilidad */
+        linear-gradient(135deg, #2C1810 0%, #3D2317 30%, #2C1810 70%, #1F1107 100%);
+    border: 4px solid var(--gold-primary);
+    border-radius: var(--border-radius-lg);
+    padding: 0;
+    max-width: 900px;
+    width: 92%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(212, 175, 55, 0.3),
+        inset 0 2px 8px rgba(255, 255, 255, 0.05);
+    animation: slideIn 0.4s ease-out;
+}
+
+/* Marco dorado exterior más prominente */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--gold-secondary), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-secondary));
+    border-radius: 20px;
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Header del modal con mejor contraste */
+.modal-header {
+    background: linear-gradient(135deg, var(--wood-dark), var(--wood-primary));
+    padding: var(--spacing-lg);
+    border-bottom: 3px solid var(--gold-primary);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.modal-title,
+.project-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(212, 175, 55, 0.6);
+    margin: 0;
+    text-align: center;
+}
+
+.project-subtitle {
+    color: var(--text-cream);
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: center;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Cuerpo del modal con fondo más sólido */
+#modal-body,
+.modal-body {
+    background: 
+        linear-gradient(135deg, #1F1107 0%, #2C1810 50%, #1F1107 100%);
+    padding: var(--spacing-xl);
+    color: var(--text-cream);
+    font-family: 'EB Garamond', serif;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+/* Contenido del proyecto */
+.project-card {
+    background: transparent;
+}
+
+.project-header {
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-content {
+    padding: 0;
+}
+
+.project-description {
+    color: var(--text-cream);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--gold-primary);
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+/* Secciones del proyecto */
+.project-section {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.project-section h3 {
+    color: var(--gold-light);
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Metadatos con mejor contraste */
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--bronze);
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-cream);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.meta-icon {
+    color: var(--gold-primary);
+    font-size: 1.2rem;
+}
+
+/* Estados del proyecto más legibles */
+.project-status {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    border: 2px solid;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.status-completed,
+.status-lanzado {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border-color: #2E7D32;
+}
+
+.status-development,
+.status-beta,
+.status-early-access {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--wood-dark);
+    border-color: var(--gold-primary);
+}
+
+/* Tags más legibles */
+.tech-stack,
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tech-tag,
+.tag {
+    background: linear-gradient(135deg, var(--wood-primary), var(--wood-secondary));
+    color: var(--text-cream);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 2px solid var(--bronze);
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Features más legibles */
+.project-features {
+    list-style: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.project-features li {
+    padding: var(--spacing-sm) 0;
+    color: var(--text-cream);
+    position: relative;
+    padding-left: var(--spacing-lg);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.project-features li::before {
+    content: '⚔️';
+    position: absolute;
+    left: 0;
+    color: var(--gold-primary);
+    font-size: 1rem;
+}
+
+/* Botones del modal más legibles */
+.project-links {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid var(--bronze);
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+    color: var(--wood-dark);
+    border-color: var(--gold-primary);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--wood-primary), var(--wood-dark));
+    color: var(--text-cream);
+    border-color: var(--bronze);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+    box-shadow: 0 8px 16px var(--glow-gold);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, var(--wood-secondary), var(--wood-primary));
+    color: var(--gold-light);
+}
+
+/* Botón de cierre mejorado */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--wood-dark), var(--wood-primary));
+    border: 3px solid var(--gold-primary);
+    color: var(--gold-light);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    z-index: 2001;
+}
+
+.close:hover {
+    background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+    color: var(--wood-dark);
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6px 12px var(--glow-gold);
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+        max-height: 95vh;
+    }
+    
+    .modal-title,
+    .project-title {
+        font-size: 1.8rem;
+    }
+    
+    #modal-body,
+    .modal-body {
+        padding: var(--spacing-md);
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .project-links {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

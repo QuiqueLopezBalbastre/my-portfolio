@@ -1,0 +1,378 @@
+/* ===== FORMS STYLES ===== */
+
+/* Formularios base */
+.contact-form,
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Campos de entrada */
+.contact-form input,
+.contact-form textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+select,
+textarea {
+    background: linear-gradient(145deg, var(--wood-dark), var(--wood-primary));
+    border: 2px solid var(--bronze);
+    border-radius: var(--border-radius-md);
+    padding: 15px 20px;
+    color: var(--text-white);
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    width: 100%;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        0 2px 4px var(--shadow-secondary);
+}
+
+/* Placeholders */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: var(--bronze);
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Estados de foco */
+.contact-form input:focus,
+.contact-form textarea:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+    box-shadow: 
+        0 0 15px var(--glow-gold),
+        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, var(--wood-primary), var(--wood-secondary));
+    color: var(--text-cream);
+}
+
+/* Textarea específico */
+.contact-form textarea,
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'EB Garamond', serif;
+    line-height: 1.5;
+}
+
+/* Select personalizado */
+select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L0 0h12z' fill='%23D4AF37'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L0 0h12z' fill='%23E6C84D'/%3E%3C/svg%3E");
+}
+
+/* Labels */
+label {
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    color: var(--gold-primary);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Grupos de campos */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Checkbox y radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+    accent-color: var(--gold-primary);
+    transform: scale(1.2);
+}
+
+.checkbox-group,
+.radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.checkbox-label,
+.radio-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: var(--text-white);
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* Estados de validación */
+.form-group.valid input,
+.form-group.valid textarea,
+.form-group.valid select {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.form-group.invalid input,
+.form-group.invalid textarea,
+.form-group.invalid select {
+    border-color: #f44336;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+}
+
+/* Mensajes de validación */
+.field-message {
+    font-size: 0.85rem;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.field-message.success {
+    color: #4CAF50;
+}
+
+.field-message.error {
+    color: #f44336;
+}
+
+.field-message.info {
+    color: var(--bronze);
+}
+
+/* Mensaje de éxito general */
+.mensaje-exito,
+#mensaje-exito {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 15px 20px;
+    border-radius: var(--border-radius-md);
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: 2px solid #388e3c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.mensaje-exito.show,
+#mensaje-exito.show {
+    display: block;
+    animation: slideInFromTop 0.5s ease;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fieldsets */
+fieldset {
+    border: 2px solid var(--bronze);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+legend {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: var(--gold-primary);
+    padding: 0 15px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Indicadores requeridos */
+.required::after {
+    content: ' *';
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Campos deshabilitados */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: linear-gradient(145deg, #666, #555);
+    color: #ccc;
+}
+
+/* Ayuda contextual */
+.field-help {
+    font-size: 0.8rem;
+    color: var(--bronze);
+    font-style: italic;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Contador de caracteres */
+.char-counter {
+    font-size: 0.8rem;
+    color: var(--bronze);
+    text-align: right;
+    margin-top: 5px;
+}
+
+.char-counter.warning {
+    color: #ff9800;
+}
+
+.char-counter.danger {
+    color: #f44336;
+}
+
+/* Formularios en modal */
+.modal .contact-form,
+.modal .form-container {
+    margin: 0;
+    max-width: none;
+}
+
+/* Responsive para formularios */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .contact-form input,
+    .contact-form textarea,
+    input,
+    textarea,
+    select {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    label {
+        font-size: 0.9rem;
+    }
+    
+    fieldset {
+        padding: 15px;
+    }
+    
+    legend {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form input,
+    .contact-form textarea,
+    input,
+    textarea,
+    select {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .checkbox-group,
+    .radio-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* Animaciones de entrada */
+.form-group {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: formGroupFadeIn 0.6s ease forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes formGroupFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estados de carga en formularios */
+.form-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.form-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius-md);
+    z-index: 10;
+}
+
+.form-loading .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}

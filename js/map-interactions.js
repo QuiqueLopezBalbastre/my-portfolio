@@ -1,4 +1,4 @@
-// ===== MAP INTERACTIONS SYSTEM =====
+// ===== MAP INTERACTIONS SYSTEM - SIMPLIFICADO Y CORREGIDO =====
 
 class MapInteractionManager {
     constructor() {
@@ -11,13 +11,19 @@ class MapInteractionManager {
     }
     
     init() {
+        console.log('MapInteractionManager: Inicializando...');
+        console.log(`MapInteractionManager: Encontrados ${this.continents.length} continentes`);
+        
         this.setupContinentEvents();
         this.setupAccessibility();
-        this.preloadInteractions();
+        
+        console.log('MapInteractionManager: Inicialización completada');
     }
     
     setupContinentEvents() {
-        this.continents.forEach(continent => {
+        this.continents.forEach((continent, index) => {
+            console.log(`MapInteractionManager: Configurando eventos para continente ${index + 1}:`, continent.id);
+            
             // Mouse events
             continent.addEventListener('mouseenter', (e) => this.handleContinentHover(e));
             continent.addEventListener('mouseleave', (e) => this.handleContinentLeave(e));
@@ -41,6 +47,8 @@ class MapInteractionManager {
         const continent = event.target;
         const projectData = this.getProjectData(continent);
         
+        console.log('MapInteractionManager: Hover en continente:', continent.id, projectData);
+        
         if (projectData) {
             // Show tooltip
             window.tooltipManager?.showTooltip(event, projectData);
@@ -56,6 +64,8 @@ class MapInteractionManager {
     handleContinentLeave(event) {
         if (this.interactionCooldown) return;
         
+        console.log('MapInteractionManager: Saliendo de continente:', event.target.id);
+        
         const continent = event.target;
         
         // Hide tooltip
@@ -67,25 +77,26 @@ class MapInteractionManager {
     
     handleContinentMouseMove(event) {
         if (window.tooltipManager?.isVisible()) {
-            // Throttle el update del tooltip para elementos pequeños
-            if (!this.tooltipUpdateThrottle) {
-                this.tooltipUpdateThrottle = true;
-                requestAnimationFrame(() => {
-                    window.tooltipManager?.updateTooltipPosition(event);
-                    this.tooltipUpdateThrottle = false;
-                });
-            }
+            window.tooltipManager?.updateTooltipPosition(event);
         }
     }
     
     handleContinentClick(event) {
         event.preventDefault();
         
-        if (this.interactionCooldown) return;
+        console.log('MapInteractionManager: Click en continente:', event.target.id);
+        
+        if (this.interactionCooldown) {
+            console.log('MapInteractionManager: Click ignorado por cooldown');
+            return;
+        }
+        
         this.setCooldown(300); // Prevent rapid clicks
         
         const continent = event.target;
         const projectData = this.getProjectData(continent);
+        
+        console.log('MapInteractionManager: Datos del proyecto para click:', projectData);
         
         if (projectData) {
             // Create ripple effect
@@ -97,19 +108,39 @@ class MapInteractionManager {
             // Hide tooltip
             window.tooltipManager?.hideTooltip();
             
-            // Open project modal with delay for better UX
+            // Verificar que modalManager esté disponible
+            if (!window.modalManager) {
+                console.error('MapInteractionManager: modalManager no está disponible');
+                return;
+            }
+            
+            // Verificar que modalManager tenga datos cargados
+            if (!window.modalManager.isDataLoaded) {
+                console.error('MapInteractionManager: modalManager no tiene datos cargados');
+                return;
+            }
+            
+            console.log(`MapInteractionManager: Abriendo modal para proyecto: ${projectData.project}`);
+            
+            // Open project modal with the project ID
             setTimeout(() => {
-                window.modalManager?.openProjectModal(projectData);
+                try {
+                    window.modalManager.openProjectModal(projectData.project);
+                } catch (error) {
+                    console.error('MapInteractionManager: Error abriendo modal:', error);
+                }
             }, 200);
             
-            // Analytics tracking (if implemented)
+            // Analytics tracking
             this.trackInteraction('continent_click', projectData.project);
+        } else {
+            console.warn('MapInteractionManager: No hay datos de proyecto para este continente');
         }
     }
     
     handleTouchStart(event) {
-        // Prevent default to avoid hover states on touch devices
         const continent = event.target;
+        console.log('MapInteractionManager: Touch start en:', continent.id);
         this.addHoverEffects(continent);
     }
     
@@ -117,6 +148,8 @@ class MapInteractionManager {
         event.preventDefault();
         
         const continent = event.target;
+        console.log('MapInteractionManager: Touch end en:', continent.id);
+        
         const projectData = this.getProjectData(continent);
         
         if (projectData) {
@@ -133,34 +166,37 @@ class MapInteractionManager {
     
     handleKeyboardInteraction(event) {
         if (event.key === 'Enter' || event.key === ' ') {
+            console.log('MapInteractionManager: Keyboard interaction:', event.key);
             event.preventDefault();
             this.handleContinentClick(event);
         }
     }
     
+    // MÉTODO SIMPLIFICADO: Obtener datos básicos del HTML
     getProjectData(continent) {
         const projectId = continent.dataset.project;
         const title = continent.dataset.title;
         const description = continent.dataset.description;
         
-        if (!projectId) return null;
+        if (!projectId) {
+            console.warn('MapInteractionManager: No project ID found for continent:', continent.id);
+            return null;
+        }
         
-        // Get full project data from project-data.js
-        const fullProjectData = window.projectData?.[projectId];
+        console.log(`MapInteractionManager: Datos extraídos - ID: ${projectId}, Title: ${title}`);
         
+        // Retornar datos básicos para tooltip, el modal manager se encargará del JSON
         return {
             project: projectId,
             title: title || 'Proyecto Sin Título',
             description: description || 'Descripción no disponible',
-            element: continent,
-            ...fullProjectData
+            element: continent
         };
     }
     
     addHoverEffects(continent) {
         continent.classList.add('hovered');
         
-        // Add glow effect to surrounding area
         if (this.mapContainer) {
             this.mapContainer.style.filter = 'brightness(1.1)';
         }
@@ -184,6 +220,8 @@ class MapInteractionManager {
         this.activeContinent = continent;
         continent.classList.add('active');
         
+        console.log('MapInteractionManager: Continente activo:', continent.id);
+        
         // Auto-remove active state after modal closes
         setTimeout(() => {
             if (this.activeContinent === continent) {
@@ -194,6 +232,7 @@ class MapInteractionManager {
     
     clearActiveContinent() {
         if (this.activeContinent) {
+            console.log('MapInteractionManager: Limpiando continente activo');
             this.activeContinent.classList.remove('active');
             this.activeContinent = null;
         }
@@ -235,7 +274,7 @@ class MapInteractionManager {
     }
     
     setupAccessibility() {
-        this.continents.forEach((continent, index) => {
+        this.continents.forEach((continent) => {
             const projectData = this.getProjectData(continent);
             if (projectData) {
                 continent.setAttribute('aria-label', 
@@ -245,18 +284,8 @@ class MapInteractionManager {
         });
     }
     
-    preloadInteractions() {
-        // Preload modal content for better performance
-        this.continents.forEach(continent => {
-            const projectData = this.getProjectData(continent);
-            if (projectData && window.modalManager) {
-                window.modalManager.preloadProject(projectData);
-            }
-        });
-    }
-    
     trackInteraction(action, projectId) {
-        // Analytics tracking - implement with your preferred analytics service
+        // Analytics tracking
         if (typeof gtag !== 'undefined') {
             gtag('event', action, {
                 'event_category': 'portfolio_interaction',
@@ -265,8 +294,7 @@ class MapInteractionManager {
             });
         }
         
-        // Console log for development
-        console.log(`Interaction tracked: ${action} - ${projectId}`);
+        console.log(`MapInteractionManager: Interaction tracked: ${action} - ${projectId}`);
     }
     
     // Public API methods
@@ -283,6 +311,15 @@ class MapInteractionManager {
         this.continents.forEach(continent => {
             this.removeHoverEffects(continent);
         });
+    }
+    
+    // Método de debug
+    debugInfo() {
+        console.log('=== MAP INTERACTION MANAGER DEBUG ===');
+        console.log('continents found:', this.continents.length);
+        console.log('modalManager available:', !!window.modalManager);
+        console.log('modalManager data loaded:', window.modalManager?.isDataLoaded);
+        console.log('======================================');
     }
 }
 

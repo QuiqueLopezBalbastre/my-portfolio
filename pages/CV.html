@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quique López Balbastre - CV Programador</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para impresión/PDF */
+        @media print {
+            body {
+                font-size: 11pt;
+                line-height: 1.4;
+                color: #000;
+                background: white;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header {
+                background: #2c3e50 !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 25px;
+            }
+            
+            .project, .education-item {
+                page-break-inside: avoid;
+                margin-bottom: 15px;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #2c3e50;
+            background: #f8f9fa;
+            font-size: 12pt;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .print-info {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 35px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28pt;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .header h2 {
+            font-size: 14pt;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.9);
+            font-size: 11pt;
+        }
+
+        .contact-item strong {
+            font-weight: 500;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            font-size: 16pt;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 12pt;
+            font-weight: 600;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 2px 0;
+            color: #555;
+            font-size: 11pt;
+        }
+
+        .skill-category li::before {
+            content: "•";
+            color: #3498db;
+            margin-right: 8px;
+        }
+
+        .project {
+            background: #f8f9fa;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .project h4 {
+            color: #2c3e50;
+            margin-bottom: 6px;
+            font-size: 13pt;
+            font-weight: 600;
+        }
+
+        .project p {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 11pt;
+            line-height: 1.4;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: #3498db;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10pt;
+            font-weight: 500;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 10pt;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .education-item h4 {
+            color: #2c3e50;
+            margin-bottom: 4px;
+            font-size: 12pt;
+            font-weight: 600;
+        }
+
+        .education-meta {
+            color: #7f8c8d;
+            font-size: 10pt;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .education-item p {
+            color: #555;
+            font-size: 11pt;
+            line-height: 1.3;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .cert-item {
+            background: #e8f5e8;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .cert-item h4 {
+            color: #2c3e50;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .cert-item p {
+            color: #555;
+            font-size: 10pt;
+            line-height: 1.3;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .lang-item {
+            text-align: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+
+        .lang-item h4 {
+            color: #2c3e50;
+            font-size: 11pt;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .lang-level {
+            color: #3498db;
+            font-weight: 500;
+            font-size: 10pt;
+        }
+
+        /* Responsive para pantalla */
+        @media screen and (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .skills-container,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .languages-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* Botón de impresión */
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #2980b9;
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">📄 Generar PDF</button>
+    
+    <div class="print-info no-print">
+        💡 Para generar el PDF: Haz clic en "Generar PDF" o presiona Ctrl+P (Cmd+P en Mac) y selecciona "Guardar como PDF"
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Quique López Balbastre</h1>
+            <h2>Programador de Videojuegos</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span><strong>+34 629 60 12 45</strong></span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span><strong>quilobal@gmail.com</strong></span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span><strong>linkedin.com/in/quique-lopez-balbastre</strong></span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span><strong>Valencia, España</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <section class="section">
+                <h3>💻 Habilidades Técnicas</h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Motores de Juego</h4>
+                        <ul>
+                            <li>Unreal Engine 5</li>
+                            <li>Unity</li>
+                            <li>Unreal Engine Blueprints</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Lenguajes de Programación</h4>
+                        <ul>
+                            <li>C++</li>
+                            <li>C#</li>
+                            <li>JavaScript</li>
+                            <li>HTML/CSS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Áreas de Desarrollo</h4>
+                        <ul>
+                            <li>Gameplay Programming</li>
+                            <li>Systems Design</li>
+                            <li>Web Development</li>
+                            <li>UI/UX</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Metodologías</h4>
+                        <ul>
+                            <li>Agile Scrum</li>
+                            <li>Narrative Design</li>
+                            <li>Technical Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>🎮 Proyectos Destacados</h3>
+                
+                <div class="project">
+                    <h4>Portfolio Interactivo con Mapa Fantasy</h4>
+                    <p>Portfolio web personal con mapa interactivo estilo fantasy para mostrar proyectos. Incluye animaciones CSS, barras de progreso dinámicas y formulario de contacto funcional.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SVG</span>
+                    </div>
+                    <a href="https://github.com/quiquelopezbalbastre/my-portfolio" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/my-portfolio</a>
+                </div>
+
+                <div class="project">
+                    <h4>Sistema de Gameplay en UE5</h4>
+                    <p>Desarrollo de mecánicas de juego en Unreal Engine 5 con sistemas de combate, inventario y progresión de personajes. Implementación en C++ con integración Blueprint.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Blueprints</span>
+                    </div>
+                    <a href="https://github.com/quiquelopezbalbastre/gameplay-system" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/gameplay-system</a>
+                </div>
+
+                <div class="project">
+                    <h4>Prototipo Mobile Game</h4>
+                    <p>Desarrollo de prototipo para dispositivos móviles con controles táctiles optimizados, sistema de monetización y métricas de analytics integradas.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Mobile</span>
+                    </div>
+                    <a href="https://github.com/quiquelopezbalbastre/mobile-prototype" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/mobile-prototype</a>
+                </div>
+
+                <div class="project">
+                    <h4>Herramienta de Diseño de Niveles</h4>
+                    <p>Editor personalizado para diseño de niveles con sistema de tiles, generación procedural de contenido y exportación automática a formatos de game engine.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Unity Editor</span>
+                        <span class="tech-tag">Tools</span>
+                    </div>
+                    <a href="https://github.com/quiquelopezbalbastre/level-editor" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/level-editor</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>🎓 Educación</h3>
+                
+                <div class="education-item">
+                    <h4>HND in Computing - Programación Informática</h4>
+                    <div class="education-meta">ESAT - Escuela Superior de Arte y Tecnología, Valencia | Octubre 2021 - Junio 2025</div>
+                    <p>Especialización en desarrollo de videojuegos, programación de gameplay y diseño de sistemas. Enfoque en Unreal Engine 5 y C++.</p>
+                </div>
+
+                <div class="education-item">
+                    <h4>Executive MBA</h4>
+                    <div class="education-meta">Cámara de Comercio Valencia | Octubre 2022 - Septiembre 2023</div>
+                    <p>Formación en gestión empresarial y liderazgo de equipos técnicos. Enfoque en gestión de proyectos tecnológicos.</p>
+                </div>
+
+                <div class="education-item">
+                    <h4>Grado Superior en Comercio Internacional</h4>
+                    <div class="education-meta">Capitol Empresa | 2018 - 2020</div>
+                    <p>Negocios internacionales y gestión comercial. Base sólida en gestión empresarial.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>🏆 Certificaciones</h3>
+                <div class="certifications-grid">
+                    <div class="cert-item">
+                        <h4>Diseñador Narrativo de Videojuego</h4>
+                        <p>Certificación especializada en narrative design y storytelling interactivo para videojuegos.</p>
+                    </div>
+                    <div class="cert-item">
+                        <h4>Agile Scrum Master</h4>
+                        <p>Metodologías ágiles para desarrollo de software y gestión eficiente de proyectos técnicos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>🌍 Idiomas</h3>
+                <div class="languages-grid">
+                    <div class="lang-item">
+                        <h4>Catalán</h4>
+                        <div class="lang-level">Nativo</div>
+                    </div>
+                    <div class="lang-item">
+                        <h4>Español</h4>
+                        <div class="lang-level">Nativo</div>
+                    </div>
+                    <div class="lang-item">
+                        <h4>Inglés</h4>
+                        <div class="lang-level">Profesional</div>
+                    </div>
+                    <div class="lang-item">
+                        <h4>Francés</h4>
+                        <div class="lang-level">Básico</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

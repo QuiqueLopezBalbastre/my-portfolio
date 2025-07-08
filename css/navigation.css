@@ -1,0 +1,337 @@
+/* ===== NAVIGATION AND HEADER STYLES ===== */
+
+/* Navegación principal */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: linear-gradient(90deg, transparent, rgba(44, 24, 16, 0.9), transparent);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid var(--bronze);
+    box-shadow: 0 4px 8px var(--shadow-primary);
+    transition: all var(--transition-fast);
+}
+
+/* Efectos de scroll en el header */
+nav.scrolled {
+    background: linear-gradient(90deg, transparent, rgba(44, 24, 16, 0.95), transparent);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 6px 12px var(--shadow-primary);
+}
+
+/* Logo */
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-gold);
+    text-shadow: 2px 2px 4px var(--shadow-secondary);
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.logo:hover {
+    color: var(--gold-light);
+    text-shadow: 
+        2px 2px 4px var(--shadow-secondary),
+        0 0 15px var(--glow-gold);
+}
+
+/* Enlaces de navegación */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all var(--transition-fast);
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold-primary);
+    transition: width var(--transition-fast);
+}
+
+.nav-links a:hover {
+    color: var(--text-gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.nav-links a:hover::after {
+    width: 80%;
+}
+
+.nav-links a.active {
+    color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.15);
+}
+
+.nav-links a.active::after {
+    width: 80%;
+}
+
+/* Burger menu para móvil */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.burger div,
+.linea1,
+.linea2,
+.linea3 {
+    width: 25px;
+    height: 3px;
+    background: var(--text-gold);
+    margin: 3px;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Animaciones del burger menu */
+.burger.toggle .linea1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .linea2 {
+    opacity: 0;
+}
+
+.burger.toggle .linea3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 5%;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .burger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background: linear-gradient(180deg, var(--bg-primary), var(--bg-tent));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform var(--transition-smooth);
+        border-left: 3px solid var(--bronze);
+        backdrop-filter: blur(15px);
+        z-index: 999;
+        gap: 20px;
+    }
+
+    .nav-links.nav-activo {
+        transform: translateX(0%);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        margin: 15px 0;
+        padding: 15px 30px;
+        width: 80%;
+        text-align: center;
+        border-radius: var(--border-radius-md);
+    }
+    
+    .nav-links a:hover {
+        background: rgba(212, 175, 55, 0.2);
+    }
+}
+
+/* Skip links para accesibilidad */
+.skip-links {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 10000;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    color: white;
+    background: var(--bg-primary);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: top var(--transition-fast);
+    border: 2px solid var(--bronze);
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Navegación con scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-primary), var(--gold-light));
+    z-index: 1001;
+    transition: width 0.3s ease;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--bronze);
+}
+
+.breadcrumb a {
+    color: var(--gold-primary);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--gold-light);
+}
+
+.breadcrumb-separator {
+    color: var(--bronze);
+    font-size: 0.8rem;
+}
+
+/* Navegación secundaria */
+.secondary-nav {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bronze);
+}
+
+.secondary-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.secondary-nav a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.secondary-nav a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-primary);
+}
+
+/* Navegación en tabletas */
+@media (max-width: 991px) and (min-width: 769px) {
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
+/* Estados especiales de navegación */
+.nav-hidden {
+    transform: translateY(-100%);
+}
+
+.nav-visible {
+    transform: translateY(0);
+}
+
+/* Animaciones suaves para el header */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+nav {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Overlay para el menú móvil */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.nav-overlay.active {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nav-overlay.active {
+        display: block;
+    }
+}
