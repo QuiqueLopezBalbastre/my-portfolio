@@ -47,37 +47,28 @@
         },
         "tarraconensis": {
             "title": "Inside the Crow's Nest",
-            "subtitle": "Survival-Horror videogame",
-            "description": "RTS sobre la conquista romana de la costa mediterránea",
-            "longDescription": "Un juego de estrategia en tiempo real que recrea la conquista romana de Tarraconensis. Los jugadores pueden elegir liderar las legiones romanas o defender las ciudades ibéricas en una campaña épica que abarca desde Emporion hasta Cartago Nova.",
+            "subtitle": "Survival Horror videogame",
+            "description": "Survival horror game",
+            "longDescription": "Inside the Crow 's Nest is a Survival Horror game inspired by old-school genre classics. You play as the Hunter, who awakens in a cell marked with strange symbols, trapped in a cult-infested monastery. To escape, you must survive horrifying cultists, uncover dark secrets, and solve intricate puzzles that block your escape.",
             "technologies": [
                 "Unreal Engine 5",
                 "C++",
-                "Legion Formation AI",
-                "Siege Mechanics",
-                "Economic Simulation",
-                "Historical Database"
+                "Blueprints"
             ],
             "features": [
-                "Formaciones militares históricamente precisas",
-                "Sistema de asedio avanzado con maquinaria romana",
-                "Gestión de provincias y tributos",
-                "Campaña histórica con 20 batallas épicas",
-                "Modo multijugador hasta 8 jugadores",
-                "Editor de mapas con herramientas topográficas"
+                "Nostalgic Survival Horror Feel",
+                "Challenging, Rewarding Puzzles",
+                "Relentless Cultists and Monstrous Horrors",
+                "A Mystery Waiting to Be Uncovered"
             ],
             "images": [
                 {
-                    "url": "images/tarraconensis/ICON.png",
+                    "url": "images/projects/Tarraconensis/ICON.png",
                     "alt": "Legión romana marchando por Tarragona"
                 },
                 {
-                    "url": "images/tarraconensis/asedio-ciudad.jpg",
+                    "url": "images/projects/Tarraconensis/TWITCH_POSTER.png",
                     "alt": "Asedio romano a una ciudad ibérica"
-                },
-                {
-                    "url": "images/tarraconensis/anfiteatro.jpg",
-                    "alt": "Construcción del anfiteatro de Tarraco"
                 }
             ],
             "links": {
@@ -134,7 +125,7 @@
             "region": "cartaginensis"
         },
         "lusitania": {
-            "title": "Viriato: El Último Guerrero",
+            "title": "Poopy Walk",
             "subtitle": "Action-adventure sobre la resistencia lusitana contra Roma",
             "description": "Action-adventure sobre la resistencia lusitana contra Roma",
             "longDescription": "Un juego de acción y aventura que narra la épica historia de Viriato, el pastor que se convirtió en el terror de Roma. Combina combate táctico, sigilo y diplomacia tribal en la lucha por la independencia lusitana.",
@@ -169,12 +160,10 @@
                 }
             ],
             "links": {
-                "github": "https://github.com/tuusuario/viriato-adventure",
-                "demo": "https://youtu.be/demo-viriato",
-                "download": "https://epic-games.viriato-game.com"
+                "github": "https://github.com/GoldsolacePVG/PoopyWalk"
             },
-            "status": "Lanzado",
-            "duration": "20 meses",
+            "status": "Launched",
+            "duration": "2 days",
             "team": "Equipo de 5 desarrolladores",
             "region": "lusitania"
         },

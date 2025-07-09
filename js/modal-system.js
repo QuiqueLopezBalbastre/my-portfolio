@@ -241,16 +241,103 @@ class ModalManager {
     }
 
     loadProjectContent(projectData) {
-        console.log('ModalManager: Cargando contenido del proyecto');
+        console.log('ModalManager: Cargando contenido del proyecto con carrousel');
         const content = this.generateProjectHTML(projectData);
 
         if (this.modalBody) {
             this.modalBody.innerHTML = content;
             console.log('ModalManager: Contenido HTML generado e insertado');
+
+            // Configurar carrousels después de insertar el HTML
+            this.setupCarousels();
+
             this.animateModalContent();
         } else {
             console.error('ModalManager: modalBody no encontrado');
         }
+    }
+
+    setupCarousels() {
+        const carousels = this.modalBody.querySelectorAll('.image-carousel');
+        carousels.forEach(carousel => {
+            const carouselId = carousel.id;
+
+            // Configurar navegación por teclado
+            this.setupCarouselKeyboard(carouselId);
+
+            // Configurar auto-play si se desea (comentado por defecto)
+            // this.setupCarouselAutoplay(carouselId, 5000);
+
+            // Configurar touch/swipe para móviles
+            this.setupCarouselTouch(carouselId);
+        });
+    }
+    setupCarouselKeyboard(carouselId) {
+    document.addEventListener('keydown', (e) => {
+        if (!this.isOpen) return;
+        
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+        
+        switch(e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                this.moveCarousel(carouselId, -1);
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                this.moveCarousel(carouselId, 1);
+                break;
+            case 'Home':
+                e.preventDefault();
+                this.goToSlide(carouselId, 0);
+                break;
+            case 'End':
+                e.preventDefault();
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                this.goToSlide(carouselId, slides.length - 1);
+                break;
+        }
+    });
+}
+
+    setupCarouselTouch(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.carousel-track');
+        if (!track) return;
+
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+        });
+
+        track.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const diffX = startX - currentX;
+            const threshold = 50;
+
+            if (Math.abs(diffX) > threshold) {
+                if (diffX > 0) {
+                    this.moveCarousel(carouselId, 1); // Swipe left - next
+                } else {
+                    this.moveCarousel(carouselId, -1); // Swipe right - prev
+                }
+            }
+        });
     }
 
     // Dentro de la clase ModalManager, añade este método
@@ -282,6 +369,54 @@ class ModalManager {
         return team;
     }
 
+    generateImageCarousel(images) {
+        if (!images || images.length === 0) {
+            return ''; // No mostrar carrousel si no hay imágenes
+        }
+
+        const carouselId = `carousel-${Date.now()}`; // ID único para cada carrousel
+
+        return `
+        <div class="project-section">
+            <h3>Galería del Proyecto</h3>
+            <div class="image-carousel" id="${carouselId}">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="${carouselId}-track">
+                        ${images.map((image, index) => `
+                            <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+                                <img src="${image.url}" alt="${image.alt || 'Imagen del proyecto'}" loading="lazy">
+                                <div class="image-caption">
+                                    ${image.alt || `Imagen ${index + 1}`}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    ${images.length > 1 ? `
+                        <button class="carousel-btn carousel-prev" onclick="window.modalManager.moveCarousel('${carouselId}', -1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn carousel-next" onclick="window.modalManager.moveCarousel('${carouselId}', 1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    ` : ''}
+                </div>
+                
+                ${images.length > 1 ? `
+                    <div class="carousel-indicators">
+                        ${images.map((_, index) => `
+                            <button class="indicator ${index === 0 ? 'active' : ''}" 
+                                    onclick="window.modalManager.goToSlide('${carouselId}', ${index})"
+                                    data-index="${index}">
+                            </button>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+    }
+
     generateProjectHTML(project) {
         const {
             title = 'Proyecto Sin Título',
@@ -297,53 +432,221 @@ class ModalManager {
             team = 'Desarrollo individual'
         } = project;
 
+        // Generar HTML para el team (con enlace si corresponde)
+        const teamHTML = this.generateTeamHTML(team);
+
+        // Generar imagen de fondo para el header si está disponible
+        const headerBackgroundImage = images.length > 0 ? images[0].url : null;
+        const headerStyle = headerBackgroundImage ?
+            `background: linear-gradient(135deg, rgba(44, 24, 16, 0.85), rgba(61, 35, 23, 0.85)), url('${headerBackgroundImage}'); background-size: cover; background-position: center;` :
+            `background: linear-gradient(135deg, var(--wood-dark), var(--wood-primary));`;
+
+        // Generar carrousel de imágenes
+        const imageCarousel = this.generateImageCarousel(images);
+
+        // Añadir indicador si se están usando datos embebidos
+        const dataSourceIndicator = this.isFileProtocol ?
+            '<small style="color: #CD7F32; font-style: italic;">Datos embebidos (protocolo file://)</small>' :
+            '<small style="color: #4CAF50; font-style: italic;">Datos cargados desde JSON</small>';
+
         return `
-            <div class="project-card">
-                <div class="project-header">
-                    <h1 class="project-title">${title}</h1>
-                    <p class="project-subtitle">${subtitle}</p>
-                    <div class="project-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-calendar meta-icon"></i> 
-                            ${duration}
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-users meta-icon"></i> 
-                            ${this.generateTeamHTML(team)}
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-check-circle meta-icon"></i> 
-                            <span class="project-status status-${this.getStatusClass(status)}">${status}</span>
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="project-content">
-                    <div class="project-tags">
-                        ${technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
-                    </div>
-                    
-                    <div class="project-description">
-                        <p>${longDescription}</p>
-                    </div>
-                    
-                    ${features.length > 0 ? `
-                        <div class="project-section">
-                            <h3>Características Principales</h3>
-                            <ul class="project-features">
-                                ${features.map(feature => `<li>${feature}</li>`).join('')}
-                            </ul>
-                        </div>
-                    ` : ''}
-                    
-                    <div class="project-links">
-                        ${this.generateLinksHTML(links)}
-                    </div>
+        <div class="project-card">
+            <div class="project-header" style="${headerStyle}">
+                <h1 class="project-title">${title}</h1>
+                <p class="project-subtitle">${subtitle}</p>
+                ${dataSourceIndicator}
+                <div class="project-meta">
+                    <span class="meta-item">
+                        <i class="fas fa-calendar meta-icon"></i> 
+                        ${duration}
+                    </span>
+                    <span class="meta-item">
+                        <i class="fas fa-users meta-icon"></i> 
+                        ${teamHTML}
+                    </span>
+                    <span class="meta-item">
+                        <i class="fas fa-check-circle meta-icon"></i> 
+                        <span class="project-status status-${this.getStatusClass(status)}">${status}</span>
+                    </span>
                 </div>
             </div>
-        `;
+            
+            <div class="project-content">
+                <div class="project-tags">
+                    ${technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                </div>
+                
+                <div class="project-description">
+                    <p>${longDescription}</p>
+                </div>
+                
+                ${features.length > 0 ? `
+                    <div class="project-section">
+                        <h3>Main Features</h3>
+                        <ul class="project-features">
+                            ${features.map(feature => `<li>${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                ${imageCarousel}
+                
+                <div class="project-links">
+                    ${this.generateLinksHTML(links)}
+                </div>
+            </div>
+        </div>
+    `;
+    }
+    moveCarousel(carouselId, direction) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.carousel-track');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const indicators = carousel.querySelectorAll('.indicator');
+
+        // Encontrar slide activo actual
+        let currentIndex = 0;
+        slides.forEach((slide, index) => {
+            if (slide.classList.contains('active')) {
+                currentIndex = index;
+            }
+        });
+
+        // Calcular nuevo índice
+        let newIndex = currentIndex + direction;
+        if (newIndex < 0) newIndex = slides.length - 1;
+        if (newIndex >= slides.length) newIndex = 0;
+
+        // Actualizar slides
+        slides[currentIndex].classList.remove('active');
+        slides[newIndex].classList.add('active');
+
+        // Actualizar indicadores
+        if (indicators.length > 0) {
+            indicators[currentIndex].classList.remove('active');
+            indicators[newIndex].classList.add('active');
+        }
+
+        // Mover el track
+        const slideWidth = slides[0].offsetWidth;
+        track.style.transform = `translateX(-${newIndex * slideWidth}px)`;
+
+        // Añadir efecto de vibración para feedback
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
     }
 
+    goToSlide(carouselId, targetIndex) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        const track = carousel.querySelector('.carousel-track');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const indicators = carousel.querySelectorAll('.indicator');
+
+        // Encontrar slide activo actual
+        let currentIndex = 0;
+        slides.forEach((slide, index) => {
+            if (slide.classList.contains('active')) {
+                currentIndex = index;
+            }
+        });
+
+        // Actualizar solo si es diferente
+        if (currentIndex !== targetIndex) {
+            // Actualizar slides
+            slides[currentIndex].classList.remove('active');
+            slides[targetIndex].classList.add('active');
+
+            // Actualizar indicadores
+            if (indicators.length > 0) {
+                indicators[currentIndex].classList.remove('active');
+                indicators[targetIndex].classList.add('active');
+            }
+
+            // Mover el track
+            const slideWidth = slides[0].offsetWidth;
+            track.style.transform = `translateX(-${targetIndex * slideWidth}px)`;
+        }
+    }
+    setupCarouselAutoplay(carouselId, interval = 5000) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        if (slides.length <= 1) return;
+
+        let autoplayInterval = setInterval(() => {
+            this.moveCarousel(carouselId, 1);
+        }, interval);
+
+        // Pausar en hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(() => {
+                this.moveCarousel(carouselId, 1);
+            }, interval);
+        });
+
+        // Limpiar en modal close
+        const modal = document.getElementById('project-modal');
+        if (modal) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (!modal.classList.contains('show')) {
+                            clearInterval(autoplayInterval);
+                            observer.disconnect();
+                        }
+                    }
+                });
+            });
+            observer.observe(modal, { attributes: true });
+        }
+    } setupCarouselAutoplay(carouselId, interval = 5000) {
+        const carousel = document.getElementById(carouselId);
+        if (!carousel) return;
+
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        if (slides.length <= 1) return;
+
+        let autoplayInterval = setInterval(() => {
+            this.moveCarousel(carouselId, 1);
+        }, interval);
+
+        // Pausar en hover
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(() => {
+                this.moveCarousel(carouselId, 1);
+            }, interval);
+        });
+
+        // Limpiar en modal close
+        const modal = document.getElementById('project-modal');
+        if (modal) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (!modal.classList.contains('show')) {
+                            clearInterval(autoplayInterval);
+                            observer.disconnect();
+                        }
+                    }
+                });
+            });
+            observer.observe(modal, { attributes: true });
+        }
+    }
     getStatusClass(status) {
         const statusMap = {
             'Completed': 'completed',

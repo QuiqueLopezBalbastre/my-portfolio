@@ -111,29 +111,27 @@ body::after {
 }
 
 /* ===== TIPOGRAFÍA UNIFICADA ===== */
+
 h1 {
     font-family: 'Cinzel', serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--text-gold);
+    color: var(--gold-primary);
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 15px;
     text-shadow: 
-        2px 2px 4px var(--shadow-primary),
-        0 0 15px var(--glow-gold);
-    background: linear-gradient(135deg, var(--gold-primary), var(--gold-light), var(--gold-primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+        2px 2px 4px var(--shadow-primary);
+        /* 0 0 15px var(--glow-gold); */
     position: relative;
+    padding-bottom: 12px; /* Espacio para la barra decorativa */
 }
 
 h1::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;

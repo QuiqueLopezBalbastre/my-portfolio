@@ -7,7 +7,11 @@
     <title>Enrique López Balbastre - Portfolio Interactivo</title>
     <meta name="description"
         content="Portfolio interactivo de Enrique López Balbastre, desarrollador de videojuegos con Unreal Engine 5.">
-
+    
+    <link rel="icon" type="image/x-icon" href="images/helmet_favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/roman_helmet_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/roman_helmet_16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <!-- CSS Files - Orden de importación optimizado -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/buttons.css">
@@ -26,7 +30,10 @@
 <body>
     <header>
         <nav>
-            <div class="logo">DevPortfolio</div>
+            <div class="logo">
+                <img src="./images/roman_helmet.png" width="64px" height="64px"><span class="logo-text">Henrysen</span>
+
+            </div>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#mapa-interactivo">Projects</a></li>
@@ -43,7 +50,7 @@
 
     <main>
         <section id="hero">
-            <div class="container">
+            <div class="contenedor">
                 <h1>Enrique López Balbastre</h1>
                 <p class="subtitle">Videogame developer | Unreal Engine 5 Specialist</p>
                 <div class="instructions">
@@ -62,13 +69,13 @@
                 <div class="map-container">
                     <svg id="world-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
                         <!-- GALLAECIA (Noroeste - verde) - ID CORREGIDO -->
-                        <circle id="gallaecia" class="continent" cx="180" cy="80" r="70" data-project="gallaecia"
+                        <circle id="gallaecia" class="continent" cx="150" cy="75" r="70" data-project="gallaecia"
                             data-title="RPG Celta: Gallaecia"
                             data-description="Aventura RPG ambientada en los pueblos celtas del noroeste hispano">
                         </circle>
 
                         <!-- TARRACONENSIS (Noreste - rosa/púrpura) - ID CORREGIDO -->
-                        <circle id="tarraconensis" class="continent" cx="500" cy="120" r="70"
+                        <circle id="tarraconensis" class="continent" cx="600" cy="120" r="70"
                             data-project="tarraconensis" data-title="Estrategia Romana: Tarraconensis"
                             data-description="RTS sobre la conquista romana de la costa mediterránea">
                         </circle>
@@ -80,7 +87,7 @@
                         </circle>
 
                         <!-- LUSITANIA (Oeste - naranja/salmón) - ID CORREGIDO -->
-                        <circle id="lusitania" class="continent" cx="120" cy="300" r="70" data-project="lusitania"
+                        <circle id="lusitania" class="continent" cx="120" cy="280" r="70" data-project="lusitania"
                             data-title="Viriato: El Último Guerrero"
                             data-description="Action-adventure sobre la resistencia lusitana contra Roma">
                         </circle>
@@ -92,23 +99,23 @@
                         </circle>
 
                         <!-- ISLAS BALEARES (Pequeñas islas amarillas) - ID CORREGIDO -->
-                        <circle id="baleares" class="continent" cx="700" cy="280" r="25" data-project="baleares"
+                        <circle id="baleares" class="continent" cx="750" cy="280" r="50" data-project="baleares"
                             data-title="Navegación Balear"
                             data-description="Simulador naval de las rutas comerciales baleares">
                         </circle>
 
                         <!-- Etiquetas de regiones -->
-                        <text x="180" y="85" text-anchor="middle" class="region-label"
+                        <text x="150" y="80" text-anchor="middle" class="region-label"
                             pointer-events="none">GALLAECIA</text>
-                        <text x="500" y="125" text-anchor="middle" class="region-label"
+                        <text x="600" y="125" text-anchor="middle" class="region-label"
                             pointer-events="none">TARRACONENSIS</text>
                         <text x="450" y="315" text-anchor="middle" class="region-label"
                             pointer-events="none">CARTAGINENSIS</text>
-                        <text x="120" y="305" text-anchor="middle" class="region-label"
+                        <text x="120" y="285" text-anchor="middle" class="region-label"
                             pointer-events="none">LUSITANIA</text>
                         <text x="250" y="445" text-anchor="middle" class="region-label"
                             pointer-events="none">BAETICA</text>
-                        <text x="700" y="285" text-anchor="middle" class="region-label"
+                        <text x="750" y="285" text-anchor="middle" class="region-label"
                             pointer-events="none">BALEARES</text>
                     </svg>
 
@@ -157,58 +164,96 @@
             </div>
         </section>
 
-        <!-- Sección de contacto -->
-<section id="contact">
-    <div class="container">
-        <h2>Contacto</h2>
-        <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p>
-        
-        <form class="contact-form contact-form-two-column" id="formulario-contacto">
-            <!-- Primera fila: Nombre y Email -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="nombre" class="required">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email" class="required">Email</label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+        <section id="contact">
+            <div class="container">
+                <h2>Contacto</h2>
+                <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p>
+
+                <div class="contact-container">
+                    <!-- Formulario de contacto -->
+                    <div class="contact-form-section">
+                        <form class="contact-form contact-form-two-column" id="formulario-contacto">
+                            <!-- Primera fila: Nombre y Email -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nombre" class="required">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="required">Email</label>
+                                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                                </div>
+                            </div>
+
+                            <!-- Segunda fila: Asunto y About -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="asunto">Asunto</label>
+                                    <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="about">About</label>
+                                    <input type="text" id="about" name="about" placeholder="Acerca del proyecto">
+                                </div>
+                            </div>
+
+                            <!-- Tercera fila: Mensaje (span completo) -->
+                            <div class="form-row form-row-full">
+                                <div class="form-group">
+                                    <label for="mensaje" class="required">Mensaje</label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..."
+                                        required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Cuarta fila: Botón (centrado) -->
+                            <div class="form-row form-row-button">
+                                <input type="submit" value="Enviar Mensaje">
+                            </div>
+                        </form>
+
+                        <div id="mensaje-exito">
+                            ¡Mensaje enviado con éxito! Te responderé pronto.
+                        </div>
+                    </div>
+
+                    <!-- Separador vertical -->
+                    <div class="contact-divider"></div>
+
+                    <!-- Redes sociales -->
+                    <div class="social-section">
+                        <h3>Conecta Conmigo</h3>
+                        <p class="social-subtitle">Sígueme en mis redes sociales</p>
+
+                        <div class="social-links">
+                            <a href="mailto:quilobal@gmail.com" class="social-btn">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/quique-lopez-balbastre" target="_blank"
+                                rel="noopener noreferrer" class="social-btn">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+
+                            <a href="https://github.com/QuiqueLopezBalbastre" target="_blank" rel="noopener noreferrer"
+                                class="social-btn">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+
+                            <a href="pages/CV.html" target="_blank" class="social-btn">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>CV</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Segunda fila: Asunto y About -->
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="asunto">Asunto</label>
-                    <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje">
-                </div>
-                
-                <div class="form-group">
-                    <label for="about">About</label>
-                    <input type="text" id="about" name="about" placeholder="Acerca del proyecto">
-                </div>
-            </div>
-            
-            <!-- Tercera fila: Mensaje (span completo) -->
-            <div class="form-row form-row-full">
-                <div class="form-group">
-                    <label for="mensaje" class="required">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
-                </div>
-            </div>
-            
-            <!-- Cuarta fila: Botón (centrado) -->
-            <div class="form-row form-row-button">
-                <input type="submit" value="Enviar Mensaje">
-            </div>
-        </form>
-        
-        <div id="mensaje-exito">
-            ¡Mensaje enviado con éxito! Te responderé pronto.
-        </div>
-    </div>
-</section>
+        </section>
     </main>
 
     <footer>
