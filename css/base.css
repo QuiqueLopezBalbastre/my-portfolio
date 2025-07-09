@@ -1,44 +1,54 @@
-/* Roman Empire Portfolio - Base Styles (Común a todas las páginas) */
+/* Roman Empire Portfolio - Base Styles (Nueva Paleta Mejorada) */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Trajan+Pro:wght@400;700&display=swap');
 
-/* ===== VARIABLES CSS - PALETA DE COLORES UNIFICADA ===== */
+/* ===== VARIABLES CSS - PALETA ROMANA ACTUALIZADA ===== */
 :root {
-    /* Colores principales - Madera noble y oro */
-    --wood-primary: #8B4513;
-    --wood-secondary: #A0522D;
-    --wood-dark: #654321;
-    --gold-primary: #D4AF37;
-    --gold-secondary: #B8941F;
-    --gold-light: #E6C84D;
-    --bronze: #CD7F32;
+    /* Nueva paleta basada en la imagen seleccionada */
+    --gold-light: #8a6c35;       /* Oro claro principal */
+    --gold-primary: #D9C7A7;     /* Oro medio más claro */
+    --bronze-warm: #A67E4E;      /* Bronce cálido */
+    --terracotta: #592E1E;       /* Terracota oscura */
+    --dark-brown: #261414;       /* Marrón muy oscuro para fondos */
     
-    /* Colores de texto */
-    --text-white: #FFFFFF;
-    --text-cream: #F5F5DC;
-    --text-gold: #D4AF37;
+    /* Colores derivados para mejor contraste */
+    --background-primary: #1A0F0A;    /* Fondo principal más oscuro */
+    --background-secondary: #261414;  /* Fondo secundario */
+    --background-surface: #3D2318;    /* Superficie de elementos */
     
-    /* Colores de fondo */
-    --bg-primary: #2C1810;
-    --bg-secondary: #3D2317;
-    --bg-tent: #4A2C1A;
+    /* Textos con alto contraste */
+    --text-primary: #F5F1E8;     /* Texto principal - crema muy claro */
+    --text-secondary: #E8DCC6;   /* Texto secundario */
+    --text-accent: #D9C7A7;      /* Texto de acento */
+    --text-muted: #BF9F63;       /* Texto apagado */
     
-    /* Efectos */
-    --shadow-primary: rgba(0, 0, 0, 0.6);
-    --shadow-secondary: rgba(0, 0, 0, 0.3);
-    --glow-gold: rgba(212, 175, 55, 0.3);
+    /* Bordes y separadores */
+    --border-primary: #BF9F63;   /* Bordes principales */
+    --border-secondary: #A67E4E; /* Bordes secundarios */
+    --border-subtle: #592E1E;    /* Bordes sutiles */
     
-    /* Espaciado */
+    /* Efectos y sombras */
+    --shadow-primary: rgba(0, 0, 0, 0.8);
+    --shadow-secondary: rgba(0, 0, 0, 0.4);
+    --glow-gold: rgba(191, 159, 99, 0.4);
+    --glow-warm: rgba(217, 199, 167, 0.3);
+    
+    /* Estados interactivos */
+    --hover-primary: #D4B877;    /* Hover dorado */
+    --hover-secondary: #C2945A;  /* Hover bronce */
+    --active-state: #E6D19B;     /* Estado activo */
+    
+    /* Espaciado (sin cambios) */
     --spacing-xs: 8px;
     --spacing-sm: 16px;
     --spacing-md: 24px;
     --spacing-lg: 32px;
     --spacing-xl: 48px;
     
-    /* Transiciones */
+    /* Transiciones (sin cambios) */
     --transition-fast: 0.3s ease;
     --transition-smooth: 0.5s ease;
     
-    /* Border radius */
+    /* Border radius (sin cambios) */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
@@ -53,30 +63,30 @@
 
 body {
     background: 
-        /* Tapices romanos - Patrones decorativos */
-        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 85% 80%, rgba(205, 127, 50, 0.08) 0%, transparent 25%),
-        /* Motivos romanos en el fondo */
-        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='roman-pattern' patternUnits='userSpaceOnUse' width='100' height='100'%3E%3Cg opacity='0.03'%3E%3Cpath d='M50 10 L60 30 L40 30 Z' fill='%23D4AF37'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23CD7F32' stroke-width='2'/%3E%3Cpath d='M20 80 Q50 60 80 80' fill='none' stroke='%23B8941F' stroke-width='1'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23roman-pattern)'/%3E%3C/svg%3E"),
-        /* Textura de tela/tapiz */
+        /* Patrones decorativos romanos mejorados */
+        radial-gradient(circle at 15% 20%, rgba(191, 159, 99, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 85% 80%, rgba(89, 46, 30, 0.06) 0%, transparent 25%),
+        /* Motivos romanos sutiles */
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='roman-pattern' patternUnits='userSpaceOnUse' width='100' height='100'%3E%3Cg opacity='0.02'%3E%3Cpath d='M50 10 L60 30 L40 30 Z' fill='%23BF9F63'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23A67E4E' stroke-width='2'/%3E%3Cpath d='M20 80 Q50 60 80 80' fill='none' stroke='%23592E1E' stroke-width='1'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23roman-pattern)'/%3E%3C/svg%3E"),
+        /* Textura de pergamino sutil */
         repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
-            rgba(212, 175, 55, 0.02) 2px,
-            rgba(212, 175, 55, 0.02) 4px
+            rgba(191, 159, 99, 0.01) 2px,
+            rgba(191, 159, 99, 0.01) 4px
         ),
-        /* Gradiente base de madera noble */
-        linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tent) 30%, var(--wood-dark) 60%, var(--bg-secondary) 100%);
+        /* Gradiente base mejorado */
+        linear-gradient(135deg, var(--background-primary) 0%, var(--dark-brown) 30%, var(--background-secondary) 60%, var(--background-primary) 100%);
     
     min-height: 100vh;
     font-family: 'EB Garamond', serif;
     overflow-x: hidden;
     position: relative;
-    color: var(--text-white);
+    color: var(--text-primary);
 }
 
-/* Efectos de ambiente con motivos romanos */
+/* Efectos de ambiente mejorados */
 body::before {
     content: '';
     position: fixed;
@@ -85,53 +95,40 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        /* Águilas romanas en las esquinas */
-        radial-gradient(circle at 5% 5%, rgba(212, 175, 55, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 95% 5%, rgba(212, 175, 55, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 5% 95%, rgba(212, 175, 55, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 95% 95%, rgba(212, 175, 55, 0.1) 0%, transparent 15%),
-        /* Iluminación de antorchas */
-        radial-gradient(circle at 20% 30%, rgba(255, 140, 0, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 100, 0, 0.06) 0%, transparent 35%);
+        /* Iluminación de antorchas más sutil */
+        radial-gradient(circle at 20% 30%, rgba(191, 159, 99, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(89, 46, 30, 0.04) 0%, transparent 35%),
+        /* Efectos de esquinas doradas */
+        radial-gradient(circle at 5% 5%, rgba(217, 199, 167, 0.06) 0%, transparent 15%),
+        radial-gradient(circle at 95% 95%, rgba(217, 199, 167, 0.06) 0%, transparent 15%);
     pointer-events: none;
     z-index: 1;
 }
 
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='laurel' patternUnits='userSpaceOnUse' width='200' height='200'%3E%3Cg opacity='0.02'%3E%3Cpath d='M100 50 Q120 70 100 90 Q80 70 100 50' fill='%23D4AF37'/%3E%3Cpath d='M50 100 Q70 120 90 100 Q70 80 50 100' fill='%23CD7F32'/%3E%3Cpath d='M150 100 Q170 120 190 100 Q170 80 150 100' fill='%23B8941F'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='200' height='200' fill='url(%23laurel)'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ===== TIPOGRAFÍA UNIFICADA ===== */
-
+/* ===== TIPOGRAFÍA MEJORADA ===== */
 h1 {
     font-family: 'Cinzel', serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--gold-primary);
+    color: var(--gold-light);
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 15px;
     text-shadow: 
-        2px 2px 4px var(--shadow-primary);
-        /* 0 0 15px var(--glow-gold); */
+        2px 2px 4px var(--shadow-primary),
+        0 0 15px var(--glow-gold);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     position: relative;
-    padding-bottom: 12px; /* Espacio para la barra decorativa */
 }
 
 h1::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
@@ -144,30 +141,30 @@ h2 {
     font-family: 'Cinzel', serif;
     font-size: 2.5rem;
     font-weight: 600;
-    color: var(--text-gold);
+    color: var(--gold-light);
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
     margin-bottom: 15px;
-    text-shadow: 1px 1px 3px var(--shadow-secondary);
+    text-shadow: 2px 2px 4px var(--shadow-secondary);
 }
 
 h3 {
     font-family: 'Cinzel', serif;
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--gold-secondary);
+    color: var(--gold-primary);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px;
     text-shadow: 1px 1px 2px var(--shadow-secondary);
 }
 
-/* Subtítulos unificados */
+/* Subtítulos mejorados */
 .subtitle {
     font-family: 'EB Garamond', serif;
     font-size: 1.1rem;
-    color: var(--bronze);
+    color: var(--text-accent);
     font-style: italic;
     text-align: center;
     margin-bottom: 25px;
@@ -178,11 +175,11 @@ h3 {
     line-height: 1.5;
 }
 
-/* Párrafos unificados */
+/* Párrafos mejorados */
 p {
     font-family: 'EB Garamond', serif;
     font-size: 1.1rem;
-    color: var(--text-white);
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 20px;
     text-align: justify;
@@ -196,11 +193,11 @@ p.centered,
 p.instructions {
     text-align: center;
     font-style: italic;
-    color: var(--bronze);
-    background: rgba(212, 175, 55, 0.1);
+    color: var(--text-muted);
+    background: rgba(217, 144, 54, 0.08);
     padding: 15px 25px;
     border-radius: 8px;
-    border: 2px solid var(--bronze);
+    border: 2px solid var(--border-secondary);
     margin: 20px auto;
 }
 
@@ -218,7 +215,7 @@ p.instructions {
     letter-spacing: 1px;
 }
 
-/* Links en texto */
+/* Links mejorados */
 a {
     color: var(--gold-primary);
     text-decoration: none;
@@ -227,7 +224,7 @@ a {
 }
 
 a:hover {
-    color: var(--gold-light);
+    color: var(--hover-primary);
     text-shadow: 0 0 8px var(--glow-gold);
 }
 
@@ -254,7 +251,7 @@ strong {
 }
 
 em {
-    color: var(--bronze);
+    color: var(--text-muted);
     font-style: italic;
 }
 
@@ -268,7 +265,7 @@ ul, ol {
 li {
     font-family: 'EB Garamond', serif;
     font-size: 1.1rem;
-    color: var(--text-white);
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 8px;
     position: relative;
@@ -311,11 +308,11 @@ section {
     padding: 80px 20px;
 }
 
-/* ===== HEADER UNIFICADO ===== */
+/* ===== HEADER MEJORADO ===== */
 .header {
     text-align: center;
     margin-bottom: 60px;
-    color: var(--text-gold);
+    color: var(--text-accent);
     position: relative;
 }
 
@@ -327,7 +324,7 @@ section {
     transform: translateX(-50%);
     width: 100px;
     height: 20px;
-    background: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 Q25 0 50 10 Q75 0 90 10' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 Q25 0 50 10 Q75 0 90 10' fill='none' stroke='%23BF9F63' stroke-width='2'/%3E%3C/svg%3E");
 }
 
 .header h1 {
@@ -347,7 +344,7 @@ section {
 .divider {
     width: 300px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold-primary), var(--bronze), var(--gold-primary), transparent);
+    background: linear-gradient(90deg, transparent, var(--gold-light), var(--terracotta), var(--gold-light), transparent);
     margin: 0 auto;
     border-radius: 2px;
     box-shadow: 0 2px 8px var(--glow-gold);

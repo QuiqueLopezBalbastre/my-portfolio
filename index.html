@@ -7,7 +7,7 @@
     <title>Enrique López Balbastre - Portfolio Interactivo</title>
     <meta name="description"
         content="Portfolio interactivo de Enrique López Balbastre, desarrollador de videojuegos con Unreal Engine 5.">
-    
+
     <link rel="icon" type="image/x-icon" href="images/helmet_favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/roman_helmet_32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/roman_helmet_16x16.png">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/map-styles.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/separators.css">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -60,11 +61,13 @@
                 </div>
             </div>
         </section>
-
+        <div class="section-separator separator-fade-in">
+            <div class="separator-ornament separator-eagle"></div>
+        </div>
         <section id="mapa-interactivo">
             <div class="container">
-                <h2>Proyectos Interactivos</h2>
-                <p class="subtitle">Cada región representa un proyecto único ambientado en la Hispania Romana</p>
+                <h2>Interactive projects</h2>
+                <p class="subtitle">Each region represents a unique project</p>
 
                 <div class="map-container">
                     <svg id="world-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +141,9 @@
                 </div>
             </div>
         </div>
-
+        <div class="text-separator">
+            <div class="text-separator-content">Experience</div>
+        </div>
         <!-- Sección de estadísticas -->
         <section id="stats">
             <div class="container">
@@ -163,11 +168,14 @@
                 </div>
             </div>
         </section>
-
+        <div class="section-separator separator-fade-in">
+            <div class="separator-ornament separator-shield"></div>
+        </div>
         <section id="contact">
             <div class="container">
-                <h2>Contacto</h2>
-                <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p>
+                <h2>Contact</h2>
+                <!-- <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p> -->
+                <p class="subtitle">Want to collaborate? Let's talk about our next project</p>
 
                 <div class="contact-container">
                     <!-- Formulario de contacto -->
@@ -176,46 +184,46 @@
                             <!-- Primera fila: Nombre y Email -->
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="nombre" class="required">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                    <label for="nombre" class="required">Name</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Your name" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email" class="required">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                                    <input type="email" id="email" name="email" placeholder="you@email.com" required>
                                 </div>
                             </div>
 
                             <!-- Segunda fila: Asunto y About -->
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="asunto">Asunto</label>
-                                    <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje">
+                                    <label for="asunto">Subject</label>
+                                    <input type="text" id="asunto" name="asunto" placeholder="Message subject">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="about">About</label>
-                                    <input type="text" id="about" name="about" placeholder="Acerca del proyecto">
+                                    <input type="text" id="about" name="about" placeholder="About the project">
                                 </div>
                             </div>
 
                             <!-- Tercera fila: Mensaje (span completo) -->
                             <div class="form-row form-row-full">
                                 <div class="form-group">
-                                    <label for="mensaje" class="required">Mensaje</label>
-                                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..."
+                                    <label for="mensaje" class="required">Message</label>
+                                    <textarea id="mensaje" name="mensaje" placeholder="Develop about the project..."
                                         required></textarea>
                                 </div>
                             </div>
 
                             <!-- Cuarta fila: Botón (centrado) -->
                             <div class="form-row form-row-button">
-                                <input type="submit" value="Enviar Mensaje">
+                                <input type="submit" value="Send message">
                             </div>
                         </form>
 
                         <div id="mensaje-exito">
-                            ¡Mensaje enviado con éxito! Te responderé pronto.
+                            Message successfully sent! I will answer soon.
                         </div>
                     </div>
 
@@ -255,7 +263,9 @@
             </div>
         </section>
     </main>
-
+    <div class="section-separator separator-fade-in">
+        <div class="separator-ornament separator-eagle"></div>
+    </div>
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Enrique López Balbastre. Desarrollador de Videojuegos - Unreal Engine 5</p>

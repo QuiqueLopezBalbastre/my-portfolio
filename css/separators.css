@@ -1,0 +1,353 @@
+/* ===== SEPARADORES Y DECORACIONES ROMANAS ===== */
+
+/* Separador principal entre secciones */
+.section-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    position: relative;
+}
+
+.section-separator::before {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border-primary), var(--gold-light), var(--border-primary), transparent);
+    margin: 0 var(--spacing-md);
+    box-shadow: 0 0 8px var(--glow-gold);
+}
+
+.section-separator::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border-primary), var(--gold-light), var(--border-primary), transparent);
+    margin: 0 var(--spacing-md);
+    box-shadow: 0 0 8px var(--glow-gold);
+}
+
+/* Ornamento central del separador */
+.separator-ornament {
+    width: 60px;
+    height: 60px;
+    background: 
+        radial-gradient(circle at center, var(--gold-light) 0%, var(--border-primary) 70%, var(--terracotta) 100%);
+    border: 3px solid var(--border-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--dark-brown);
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.6),
+        0 0 20px var(--glow-gold),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.separator-ornament::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--border-secondary), var(--border-primary), var(--gold-light), var(--border-primary), var(--border-secondary));
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Separador con águila romana */
+.separator-eagle {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill='%23261414'%3E%3Cpath d='M12 2L8 6v4l4 2 4-2V6l-4-4zm0 2.83L10 7v2.17l2 1 2-1V7l-2-2.17zM12 14l-6 2v4c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-4l-6-2z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+}
+
+/* Separador con laurel */
+.separator-laurel {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill='%23261414'%3E%3Cpath d='M12 2C8 2 8 6 8 6s0 4 4 4 4-4 4-4 0-4-4-4zm0 2c1.5 0 2 1.5 2 2s-.5 2-2 2-2-1.5-2-2 .5-2 2-2zm-6 8c-2 0-2 2-2 2s0 2 2 2 2-2 2-2-0-2-2-2zm12 0c2 0 2 2 2 2s0 2-2 2-2-2-2-2 0-2 2-2z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+}
+
+/* Separador con escudo */
+.separator-shield {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill='%23261414'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+}
+
+/* Separador con columna */
+.separator-column {
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg' fill='%23261414'%3E%3Crect x='10' y='2' width='4' height='20' rx='2'/%3E%3Crect x='8' y='1' width='8' height='2' rx='1'/%3E%3Crect x='8' y='21' width='8' height='2' rx='1'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+}
+
+/* Separador minimalista */
+.separator-minimal {
+    margin: var(--spacing-xl) auto;
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--border-primary), var(--gold-light), var(--border-primary), transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--glow-gold);
+    position: relative;
+}
+
+.separator-minimal::before {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--background-primary);
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    padding: 0 var(--spacing-sm);
+    text-shadow: 0 0 8px var(--glow-gold);
+}
+
+/* Separador con texto */
+.text-separator {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+    position: relative;
+}
+
+.text-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
+    z-index: 1;
+}
+
+.text-separator-content {
+    display: inline-block;
+    background: var(--background-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid var(--border-primary);
+    border-radius: 25px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Ornamentos decorativos para esquinas */
+.corner-ornament {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 Q20 0 20 20 Q20 0 40 0 L40 40 Q20 40 20 20 Q20 40 0 40 Z' fill='%23BF9F63' opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.corner-ornament.top-left {
+    top: 0;
+    left: 0;
+}
+
+.corner-ornament.top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg);
+}
+
+.corner-ornament.bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.corner-ornament.bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(270deg);
+}
+
+/* Decoración de borde para secciones importantes */
+.decorated-section {
+    position: relative;
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    border: 2px solid var(--border-secondary);
+    border-radius: var(--border-radius-lg);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.decorated-section::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    background: linear-gradient(45deg, var(--border-secondary), var(--border-primary), var(--gold-light), var(--border-primary), var(--border-secondary));
+    border-radius: var(--border-radius-lg);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Marco dorado para contenido especial */
+.golden-frame {
+    position: relative;
+    padding: var(--spacing-lg);
+    border: 3px solid var(--border-primary);
+    border-radius: var(--border-radius-md);
+    background: rgba(191, 159, 99, 0.05);
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        0 0 20px var(--glow-gold),
+        inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.golden-frame::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, var(--bronze-warm), var(--border-primary), var(--gold-light), var(--border-primary), var(--bronze-warm));
+    border-radius: var(--border-radius-md);
+    z-index: -1;
+}
+
+/* Línea de separación simple pero elegante */
+.elegant-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
+    margin: var(--spacing-lg) 0;
+    position: relative;
+}
+
+.elegant-divider::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, var(--glow-gold), transparent);
+    border-radius: 2px;
+}
+
+/* Efectos de entrada para separadores */
+.separator-fade-in {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: separatorFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes separatorFadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Separador animado */
+.animated-separator {
+    overflow: hidden;
+    position: relative;
+}
+
+.animated-separator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(191, 159, 99, 0.3), transparent);
+    animation: separatorGlow 3s ease-in-out infinite;
+}
+
+@keyframes separatorGlow {
+    0%, 100% {
+        left: -100%;
+    }
+    50% {
+        left: 100%;
+    }
+}
+
+/* Responsive para separadores */
+@media (max-width: 768px) {
+    .section-separator {
+        margin: var(--spacing-lg) 0;
+        padding: var(--spacing-md) 0;
+    }
+    
+    .separator-ornament {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .separator-minimal {
+        width: 150px;
+    }
+    
+    .text-separator-content {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs) var(--spacing-md);
+        letter-spacing: 1px;
+    }
+    
+    .decorated-section {
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+    }
+    
+    .golden-frame {
+        padding: var(--spacing-md);
+    }
+    
+    .corner-ornament {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-separator::before,
+    .section-separator::after {
+        margin: 0 var(--spacing-sm);
+    }
+    
+    .separator-ornament {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .separator-minimal {
+        width: 120px;
+    }
+    
+    .text-separator-content {
+        font-size: 0.7rem;
+        padding: 6px var(--spacing-sm);
+    }
+}
