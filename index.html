@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrique López Balbastre - Portfolio Interactivo</title>
-    <meta name="description" content="Portfolio interactivo de Enrique López Balbastre, desarrollador de videojuegos con Unreal Engine 5.">
-    
+    <meta name="description"
+        content="Portfolio interactivo de Enrique López Balbastre, desarrollador de videojuegos con Unreal Engine 5.">
+
     <!-- CSS Files - Orden de importación optimizado -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/buttons.css">
@@ -16,19 +18,20 @@
     <link rel="stylesheet" href="css/map-styles.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <header>
         <nav>
             <div class="logo">DevPortfolio</div>
             <ul class="nav-links">
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#mapa-interactivo">Proyectos</a></li>
-                <li><a href="pages/personal_data.html">Sobre mí</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#mapa-interactivo">Projects</a></li>
+                <li><a href="pages/personal_data.html">About me</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="burger">
                 <div class="linea1"></div>
@@ -42,10 +45,11 @@
         <section id="hero">
             <div class="container">
                 <h1>Enrique López Balbastre</h1>
-                <p class="subtitle">Desarrollador de Videojuegos | Unreal Engine 5 Specialist</p>
+                <p class="subtitle">Videogame developer | Unreal Engine 5 Specialist</p>
                 <div class="instructions">
                     <i class="fas fa-mouse-pointer"></i>
-                    <span>Explora mis proyectos en el mapa interactivo de Hispania Romana</span>
+                    <!-- <span>Explora mis proyectos en el mapa interactivo de Hispania Romana</span> -->
+                    <span>Explore my projects in the interactive map of Roman Hispania</span>
                 </div>
             </div>
         </section>
@@ -54,65 +58,65 @@
             <div class="container">
                 <h2>Proyectos Interactivos</h2>
                 <p class="subtitle">Cada región representa un proyecto único ambientado en la Hispania Romana</p>
-                
+
                 <div class="map-container">
                     <svg id="world-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
                         <!-- GALLAECIA (Noroeste - verde) - ID CORREGIDO -->
-                        <circle id="gallaecia" class="continent" cx="180" cy="80" r="70" 
-                                data-project="gallaecia"
-                                data-title="RPG Celta: Gallaecia"
-                                data-description="Aventura RPG ambientada en los pueblos celtas del noroeste hispano">
+                        <circle id="gallaecia" class="continent" cx="180" cy="80" r="70" data-project="gallaecia"
+                            data-title="RPG Celta: Gallaecia"
+                            data-description="Aventura RPG ambientada en los pueblos celtas del noroeste hispano">
                         </circle>
 
                         <!-- TARRACONENSIS (Noreste - rosa/púrpura) - ID CORREGIDO -->
-                        <circle id="tarraconensis" class="continent" cx="500" cy="120" r="70" 
-                                data-project="tarraconensis"
-                                data-title="Estrategia Romana: Tarraconensis"
-                                data-description="RTS sobre la conquista romana de la costa mediterránea">
+                        <circle id="tarraconensis" class="continent" cx="500" cy="120" r="70"
+                            data-project="tarraconensis" data-title="Estrategia Romana: Tarraconensis"
+                            data-description="RTS sobre la conquista romana de la costa mediterránea">
                         </circle>
 
                         <!-- CARTAGINENSIS (Centro-este - amarillo) - ID CORREGIDO -->
-                        <circle id="cartaginensis" class="continent" cx="450" cy="310" r="90" 
-                                data-project="cartaginensis"
-                                data-title="Guerra Púnica: Cartaginensis"
-                                data-description="Simulador táctico de las guerras entre Roma y Cartago">
+                        <circle id="cartaginensis" class="continent" cx="450" cy="310" r="90"
+                            data-project="cartaginensis" data-title="Guerra Púnica: Cartaginensis"
+                            data-description="Simulador táctico de las guerras entre Roma y Cartago">
                         </circle>
 
                         <!-- LUSITANIA (Oeste - naranja/salmón) - ID CORREGIDO -->
-                        <circle id="lusitania" class="continent" cx="120" cy="300" r="70" 
-                                data-project="lusitania"
-                                data-title="Viriato: El Último Guerrero"
-                                data-description="Action-adventure sobre la resistencia lusitana contra Roma">
+                        <circle id="lusitania" class="continent" cx="120" cy="300" r="70" data-project="lusitania"
+                            data-title="Viriato: El Último Guerrero"
+                            data-description="Action-adventure sobre la resistencia lusitana contra Roma">
                         </circle>
 
                         <!-- BAETICA (Sur - gris/azul) - ID CORREGIDO -->
-                        <circle id="baetica" class="continent" cx="250" cy="440" r="75" 
-                                data-project="baetica"
-                                data-title="Comercio en Hispalis"
-                                data-description="Simulador económico del comercio en la Bética romana">
+                        <circle id="baetica" class="continent" cx="250" cy="440" r="75" data-project="baetica"
+                            data-title="Comercio en Hispalis"
+                            data-description="Simulador económico del comercio en la Bética romana">
                         </circle>
 
                         <!-- ISLAS BALEARES (Pequeñas islas amarillas) - ID CORREGIDO -->
-                        <circle id="baleares" class="continent" cx="700" cy="280" r="25" 
-                                data-project="baleares"
-                                data-title="Navegación Balear"
-                                data-description="Simulador naval de las rutas comerciales baleares">
+                        <circle id="baleares" class="continent" cx="700" cy="280" r="25" data-project="baleares"
+                            data-title="Navegación Balear"
+                            data-description="Simulador naval de las rutas comerciales baleares">
                         </circle>
 
                         <!-- Etiquetas de regiones -->
-                        <text x="180" y="85" text-anchor="middle" class="region-label" pointer-events="none">GALLAECIA</text>
-                        <text x="500" y="125" text-anchor="middle" class="region-label" pointer-events="none">TARRACONENSIS</text>
-                        <text x="450" y="315" text-anchor="middle" class="region-label" pointer-events="none">CARTAGINENSIS</text>
-                        <text x="120" y="305" text-anchor="middle" class="region-label" pointer-events="none">LUSITANIA</text>
-                        <text x="250" y="445" text-anchor="middle" class="region-label" pointer-events="none">BAETICA</text>
-                        <text x="700" y="285" text-anchor="middle" class="region-label" pointer-events="none">BALEARES</text>
+                        <text x="180" y="85" text-anchor="middle" class="region-label"
+                            pointer-events="none">GALLAECIA</text>
+                        <text x="500" y="125" text-anchor="middle" class="region-label"
+                            pointer-events="none">TARRACONENSIS</text>
+                        <text x="450" y="315" text-anchor="middle" class="region-label"
+                            pointer-events="none">CARTAGINENSIS</text>
+                        <text x="120" y="305" text-anchor="middle" class="region-label"
+                            pointer-events="none">LUSITANIA</text>
+                        <text x="250" y="445" text-anchor="middle" class="region-label"
+                            pointer-events="none">BAETICA</text>
+                        <text x="700" y="285" text-anchor="middle" class="region-label"
+                            pointer-events="none">BALEARES</text>
                     </svg>
 
                     <!-- Tooltip -->
                     <div id="tooltip" class="tooltip">
                         <h3 id="tooltip-title"></h3>
                         <p id="tooltip-description"></p>
-                        <span class="tooltip-cta">Clic para ver proyecto</span>
+                        <span class="tooltip-cta">Click to view project</span>
                     </div>
                 </div>
             </div>
@@ -131,69 +135,87 @@
         <!-- Sección de estadísticas -->
         <section id="stats">
             <div class="container">
-                <h2>Experiencia en Números</h2>
+                <h2>Experience in Numbers</h2>
                 <div class="stats-container">
                     <div class="stat-item">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Años de Experiencia</span>
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">year of experience</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Proyectos Completados</span>
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">completed projects</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">3</span>
-                        <span class="stat-label">Especializaciones</span>
+                        <span class="stat-label">specializations</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">100%</span>
-                        <span class="stat-label">Enfoque en Calidad</span>
+                        <span class="stat-label">Performance oriented</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Sección de contacto -->
-        <section id="contact">
-            <div class="container">
-                <h2>Contacto</h2>
-                <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p>
+<section id="contact">
+    <div class="container">
+        <h2>Contacto</h2>
+        <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p>
+        
+        <form class="contact-form contact-form-two-column" id="formulario-contacto">
+            <!-- Primera fila: Nombre y Email -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre" class="required">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                </div>
                 
-                <form class="contact-form" id="formulario-contacto">
-                    <div class="form-group">
-                        <label for="nombre" class="required">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="required">Email</label>
-                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="mensaje" class="required">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
-                    </div>
-                    
-                    <input type="submit" value="Enviar Mensaje">
-                </form>
-                
-                <div id="mensaje-exito">
-                    ¡Mensaje enviado con éxito! Te responderé pronto.
+                <div class="form-group">
+                    <label for="email" class="required">Email</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                 </div>
             </div>
-        </section>
+            
+            <!-- Segunda fila: Asunto y About -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje">
+                </div>
+                
+                <div class="form-group">
+                    <label for="about">About</label>
+                    <input type="text" id="about" name="about" placeholder="Acerca del proyecto">
+                </div>
+            </div>
+            
+            <!-- Tercera fila: Mensaje (span completo) -->
+            <div class="form-row form-row-full">
+                <div class="form-group">
+                    <label for="mensaje" class="required">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntame sobre tu proyecto..." required></textarea>
+                </div>
+            </div>
+            
+            <!-- Cuarta fila: Botón (centrado) -->
+            <div class="form-row form-row-button">
+                <input type="submit" value="Enviar Mensaje">
+            </div>
+        </form>
+        
+        <div id="mensaje-exito">
+            ¡Mensaje enviado con éxito! Te responderé pronto.
+        </div>
+    </div>
+</section>
     </main>
 
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Enrique López Balbastre. Desarrollador de Videojuegos - Unreal Engine 5</p>
-            <p class="footer-motto">"Forjando experiencias interactivas con la precisión de un legionario"</p>
+            <!-- <p class="footer-motto">"Forjando experiencias interactivas con la precisión de un legionario"</p> -->
+            <p class="footer-motto">"Forging experience diligently like a legionnaire"</p>
         </div>
     </footer>
 
@@ -205,4 +227,5 @@
     <script src="js/script.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

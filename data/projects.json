@@ -1,191 +1,283 @@
 {
-  "projects": {
-    "gallaecia": {
-      "title": "RPG Celta: Gallaecia",
-      "subtitle": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
-      "description": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
-      "longDescription": "Un RPG épico que sigue las tradiciones celtas de Gallaecia antes y durante la llegada de Roma. Los jugadores encarnan a un druida que debe preservar las tradiciones ancestrales mientras navega las complejas relaciones con las tribus locales y los invasores romanos.",
-      "technologies": ["Unreal Engine 5", "C++", "Blueprints", "Celtic Mythology System", "Weather Magic", "Tribe Relations AI"],
-      "features": [
-        "Sistema de magia druídica basado en elementos naturales",
-        "Relaciones complejas entre tribus celtas y romanos",
-        "Mundo abierto inspirado en la Galicia antigua",
-        "Rituales sagrados en castros y bosques druídicos",
-        "Sistema de estaciones que afecta la magia y gameplay",
-        "Narrativa ramificada basada en decisiones morales"
-      ],
-      "images": [
-        { "url": "images/gallaecia/castro-celta.jpg", "alt": "Castro celta en las montañas gallegas" },
-        { "url": "images/gallaecia/druida-ritual.jpg", "alt": "Ritual druídico en el bosque sagrado" },
-        { "url": "images/gallaecia/guerreros-celtas.jpg", "alt": "Guerreros celtas defendiendo su territorio" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/gallaecia-rpg",
-        "demo": "https://youtu.be/demo-gallaecia-rpg",
-        "documentation": "https://docs.gallaecia-rpg.com"
-      },
-      "status": "En Desarrollo",
-      "duration": "12 meses",
-      "team": "Desarrollo individual + historiador consultor",
-      "region": "gallaecia"
+    "projects": {
+        "gallaecia": {
+            "title": "RPG Celta: Gallaecia",
+            "subtitle": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
+            "description": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
+            "longDescription": "Un RPG épico que sigue las tradiciones celtas de Gallaecia antes y durante la llegada de Roma. Los jugadores encarnan a un druida que debe preservar las tradiciones ancestrales mientras navega las complejas relaciones con las tribus locales y los invasores romanos.",
+            "technologies": [
+                "Unreal Engine 5",
+                "C++",
+                "Blueprints",
+                "Celtic Mythology System",
+                "Weather Magic",
+                "Tribe Relations AI"
+            ],
+            "features": [
+                "Sistema de magia druídica basado en elementos naturales",
+                "Relaciones complejas entre tribus celtas y romanos",
+                "Mundo abierto inspirado en la Galicia antigua",
+                "Rituales sagrados en castros y bosques druídicos",
+                "Sistema de estaciones que afecta la magia y gameplay",
+                "Narrativa ramificada basada en decisiones morales"
+            ],
+            "images": [
+                {
+                    "url": "images/gallaecia/castro-celta.jpg",
+                    "alt": "Castro celta en las montañas gallegas"
+                },
+                {
+                    "url": "images/gallaecia/druida-ritual.jpg",
+                    "alt": "Ritual druídico en el bosque sagrado"
+                },
+                {
+                    "url": "images/gallaecia/guerreros-celtas.jpg",
+                    "alt": "Guerreros celtas defendiendo su territorio"
+                }
+            ],
+            "links": {
+                "github": "https://github.com/tuusuario/gallaecia-rpg",
+                "demo": "https://youtu.be/demo-gallaecia-rpg",
+                "documentation": "https://docs.gallaecia-rpg.com"
+            },
+            "status": "En Desarrollo",
+            "duration": "12 meses",
+            "team": "Desarrollo individual + historiador consultor",
+            "region": "gallaecia"
+        },
+        "tarraconensis": {
+            "title": "Inside the Crow's Nest",
+            "subtitle": "Survival-Horror videogame",
+            "description": "RTS sobre la conquista romana de la costa mediterránea",
+            "longDescription": "Un juego de estrategia en tiempo real que recrea la conquista romana de Tarraconensis. Los jugadores pueden elegir liderar las legiones romanas o defender las ciudades ibéricas en una campaña épica que abarca desde Emporion hasta Cartago Nova.",
+            "technologies": [
+                "Unreal Engine 5",
+                "C++",
+                "Legion Formation AI",
+                "Siege Mechanics",
+                "Economic Simulation",
+                "Historical Database"
+            ],
+            "features": [
+                "Formaciones militares históricamente precisas",
+                "Sistema de asedio avanzado con maquinaria romana",
+                "Gestión de provincias y tributos",
+                "Campaña histórica con 20 batallas épicas",
+                "Modo multijugador hasta 8 jugadores",
+                "Editor de mapas con herramientas topográficas"
+            ],
+            "images": [
+                {
+                    "url": "images/tarraconensis/ICON.png",
+                    "alt": "Legión romana marchando por Tarragona"
+                },
+                {
+                    "url": "images/tarraconensis/asedio-ciudad.jpg",
+                    "alt": "Asedio romano a una ciudad ibérica"
+                },
+                {
+                    "url": "images/tarraconensis/anfiteatro.jpg",
+                    "alt": "Construcción del anfiteatro de Tarraco"
+                }
+            ],
+            "links": {
+                "video": "https://www.youtube.com/watch?v=qIu2EHMRd3A",
+                "download": "https://store.steampowered.com/app/3719120/Inside_the_Crows_Nest/"
+            },
+            "status": "Beta",
+            "duration": "10 meses",
+            "team": "Team of 6 programmers + 6 artists + 3 designers",
+            "region": "tarraconensis"
+        },
+        "cartaginensis": {
+            "title": "LUQUI Engine",
+            "subtitle": "3D Graphics Engine",
+            "description": "3D rendering engine",
+            "longDescription": "LUQUI Engine is a modern 3D graphics engine developed in C++ using OpenGL for rendering. Designed as a flexible and efficient framework for video game development, it implements an architecture based on the Entity-Component-System (ECS) pattern that allows for the creation of high-performance interactive applications.",
+            "technologies": [
+                "C++",
+                "OpenGL",
+                "GLFW",
+                "Assimp",
+                "ImGUI",
+                "GLM",
+                "Premake5"
+            ],
+            "features": [
+                "Input system",
+                "Advanced Python scripting system",
+                "Multithreading capabilities",
+                "Easy to use User Interface"
+            ],
+            "images": [
+                {
+                    "url": "images/cartaginensis/batalla-naval.jpg",
+                    "alt": "Batalla naval entre flotas romana y cartaginesa"
+                },
+                {
+                    "url": "images/cartaginensis/elefantes-guerra.jpg",
+                    "alt": "Elefantes de guerra cartagineses"
+                },
+                {
+                    "url": "images/cartaginensis/cartago-nova.jpg",
+                    "alt": "Asedio de Cartago Nova"
+                }
+            ],
+            "links": {
+                "github": "https://github.com/QuiqueLopezBalbastre/3PVG_PMG_24_lopezba_calatayudbri",
+                "demo": "https://www.youtube.com/watch?v=4MoQW20fAek",
+                "documentation": "https://calatayudbri.github.io/LUQUI-User-Guide/"
+            },
+            "status": "Completed",
+            "duration": "9 meses",
+            "team": "Lucas Calatayud",
+            "region": "cartaginensis"
+        },
+        "lusitania": {
+            "title": "Viriato: El Último Guerrero",
+            "subtitle": "Action-adventure sobre la resistencia lusitana contra Roma",
+            "description": "Action-adventure sobre la resistencia lusitana contra Roma",
+            "longDescription": "Un juego de acción y aventura que narra la épica historia de Viriato, el pastor que se convirtió en el terror de Roma. Combina combate táctico, sigilo y diplomacia tribal en la lucha por la independencia lusitana.",
+            "technologies": [
+                "Unreal Engine 5",
+                "C++",
+                "Guerrilla Warfare AI",
+                "Tribal Diplomacy",
+                "Stealth Mechanics",
+                "Historical Narrative"
+            ],
+            "features": [
+                "Combate híbrido: combate directo y tácticas de guerrilla",
+                "Sistema de sigilo en terrenos montañosos",
+                "Diplomacia tribal para unir clanes lusitanos",
+                "Recreación de paisajes lusitanos históricos",
+                "Narrativa basada en fuentes históricas",
+                "Mecánicas de liderazgo y moral de tropas"
+            ],
+            "images": [
+                {
+                    "url": "images/lusitania/viriato-portrait.jpg",
+                    "alt": "Retrato de Viriato, líder lusitano"
+                },
+                {
+                    "url": "images/lusitania/emboscada-montana.jpg",
+                    "alt": "Emboscada lusitana en terreno montañoso"
+                },
+                {
+                    "url": "images/lusitania/consejo-tribal.jpg",
+                    "alt": "Consejo de guerra entre jefes tribales"
+                }
+            ],
+            "links": {
+                "github": "https://github.com/tuusuario/viriato-adventure",
+                "demo": "https://youtu.be/demo-viriato",
+                "download": "https://epic-games.viriato-game.com"
+            },
+            "status": "Lanzado",
+            "duration": "20 meses",
+            "team": "Equipo de 5 desarrolladores",
+            "region": "lusitania"
+        },
+        "baetica": {
+            "title": "Nexus",
+            "subtitle": "Mobile App",
+            "description": "Companion mobile app",
+            "longDescription": "Nexus is a companion app for gamers developed in Kotlin with Jetpack Compose. The app allows players to manage gaming sessions, connect with other players, and access information about their scheduled games. It is essentially a social organizer for gaming that facilitates coordination between players.",
+            "technologies": [
+                "Android",
+                "Kotlin",
+                "Android Studio"
+            ],
+            "features": [
+                "Authentication",
+                "Session management",
+                "User profile",
+                "Game search bar. IGDB API",
+                "Contact page",
+                "Firebase conection"
+            ],
+            "images": [
+                {
+                    "url": "images/baetica/puerto-hispalis.jpg",
+                    "alt": "Puerto comercial de Hispalis (Sevilla)"
+                },
+                {
+                    "url": "images/baetica/olivar-romano.jpg",
+                    "alt": "Plantación de olivos en villa romana"
+                },
+                {
+                    "url": "images/baetica/anforas-aceite.jpg",
+                    "alt": "Ánforas de aceite listas para exportar"
+                }
+            ],
+            "links": {
+                "github": "https://github.com/QuiqueLopezBalbastre/Nexus"
+            },
+            "status": "Early Access",
+            "duration": "3 meses",
+            "team": "Individual development",
+            "region": "baetica"
+        },
+        "baleares": {
+            "title": "Water Time",
+            "subtitle": "A Unity VR project",
+            "description": "VR simulator",
+            "longDescription": "Water Time is a virtual reality experience developed as an academic project where we first learned to use VR development techniques in Unity. The game aims to evoke nostalgic memories of childhood beach days, recreating that carefree feeling of playing with water while adding elements of gameplay, fun, and challenge. Through intuitive VR interactions, players can manipulate water in various ways, solving puzzles and enjoying the sensory experience that brings back the simple joy of splashing around on a hot summer day. We focused on implementing realistic water behavior using Unity's particle systems, ensuring that the water interactions felt natural and responsive in VR. Special attention was paid to optimization for VR performance while maintaining visual fidelity.",
+            "technologies": [
+                "Unity",
+                "C#",
+                "Water Physics",
+                "Unity Niagara System"
+            ],
+            "features": [
+                "Intuitive hand-tracking interactions for manipulating water",
+                "Various water-based challenges",
+                "Immersive environment designed specifically for virtual reality",
+                "Optimized performance for smooth VR gameplay"
+            ],
+            "images": [
+                {
+                    "url": "images/baleares/galera-romana.jpg",
+                    "alt": "Galera romana navegando entre islas"
+                },
+                {
+                    "url": "images/baleares/puerto-palmaria.jpg",
+                    "alt": "Puerto de Palmaria (Palma de Mallorca)"
+                },
+                {
+                    "url": "images/baleares/combate-piratas.jpg",
+                    "alt": "Combate naval contra piratas"
+                }
+            ],
+            "links": {
+                "github": "https://github.com/LeRayRC/Publikeishion",
+                "demo": "https://www.youtube.com/watch?v=ulkzy3r9zec&t=3s"
+            },
+            "status": "Completed",
+            "duration": "4 meses",
+            "team": "Carlos García",
+            "region": "baleares"
+        }
     },
-    
-    "tarraconensis": {
-      "title": "Estrategia Romana: Tarraconensis",
-      "subtitle": "RTS sobre la conquista romana de la costa mediterránea",
-      "description": "RTS sobre la conquista romana de la costa mediterránea",
-      "longDescription": "Un juego de estrategia en tiempo real que recrea la conquista romana de Tarraconensis. Los jugadores pueden elegir liderar las legiones romanas o defender las ciudades ibéricas en una campaña épica que abarca desde Emporion hasta Cartago Nova.",
-      "technologies": ["Unreal Engine 5", "C++", "Legion Formation AI", "Siege Mechanics", "Economic Simulation", "Historical Database"],
-      "features": [
-        "Formaciones militares históricamente precisas",
-        "Sistema de asedio avanzado con maquinaria romana",
-        "Gestión de provincias y tributos",
-        "Campaña histórica con 20 batallas épicas",
-        "Modo multijugador hasta 8 jugadores",
-        "Editor de mapas con herramientas topográficas"
-      ],
-      "images": [
-        { "url": "images/tarraconensis/legion-marcha.jpg", "alt": "Legión romana marchando por Tarragona" },
-        { "url": "images/tarraconensis/asedio-ciudad.jpg", "alt": "Asedio romano a una ciudad ibérica" },
-        { "url": "images/tarraconensis/anfiteatro.jpg", "alt": "Construcción del anfiteatro de Tarraco" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/tarraconensis-strategy",
-        "demo": "https://youtu.be/demo-tarraconensis",
-        "download": "https://steam.tarraconensis-game.com"
-      },
-      "status": "Beta",
-      "duration": "18 meses",
-      "team": "Equipo de 3 desarrolladores + arqueólogo",
-      "region": "tarraconensis"
-    },
-    
-    "cartaginensis": {
-      "title": "Guerra Púnica: Cartaginensis",
-      "subtitle": "Simulador táctico de las guerras entre Roma y Cartago",
-      "description": "Simulador táctico de las guerras entre Roma y Cartago",
-      "longDescription": "Un simulador táctico centrado en los conflictos entre Roma y Cartago en territorio hispano. Recrea batallas famosas como la toma de Cartago Nova por Escipión y las campañas de Aníbal antes de cruzar los Alpes.",
-      "technologies": ["Unreal Engine 5", "C++", "Battle Simulation", "Elephant Warfare", "Naval Combat", "Weather Systems"],
-      "features": [
-        "Batallas terrestres y navales históricas",
-        "Unidades únicas: elefantes cartagineses vs. legiones",
-        "Sistema meteorológico que afecta las batallas",
-        "Campaña de Aníbal con decisiones estratégicas",
-        "Modo academia con tutoriales históricos",
-        "Recreación fiel de armaduras y tácticas"
-      ],
-      "images": [
-        { "url": "images/cartaginensis/batalla-naval.jpg", "alt": "Batalla naval entre flotas romana y cartaginesa" },
-        { "url": "images/cartaginensis/elefantes-guerra.jpg", "alt": "Elefantes de guerra cartagineses" },
-        { "url": "images/cartaginensis/cartago-nova.jpg", "alt": "Asedio de Cartago Nova" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/cartaginensis-tactics",
-        "demo": "https://youtu.be/demo-cartaginensis",
-        "documentation": "https://wiki.carthage-wars.com"
-      },
-      "status": "Completado",
-      "duration": "15 meses",
-      "team": "Desarrollo individual",
-      "region": "cartaginensis"
-    },
-    
-    "lusitania": {
-      "title": "Viriato: El Último Guerrero",
-      "subtitle": "Action-adventure sobre la resistencia lusitana contra Roma",
-      "description": "Action-adventure sobre la resistencia lusitana contra Roma",
-      "longDescription": "Un juego de acción y aventura que narra la épica historia de Viriato, el pastor que se convirtió en el terror de Roma. Combina combate táctico, sigilo y diplomacia tribal en la lucha por la independencia lusitana.",
-      "technologies": ["Unreal Engine 5", "C++", "Guerrilla Warfare AI", "Tribal Diplomacy", "Stealth Mechanics", "Historical Narrative"],
-      "features": [
-        "Combate híbrido: combate directo y tácticas de guerrilla",
-        "Sistema de sigilo en terrenos montañosos",
-        "Diplomacia tribal para unir clanes lusitanos",
-        "Recreación de paisajes lusitanos históricos",
-        "Narrativa basada en fuentes históricas",
-        "Mecánicas de liderazgo y moral de tropas"
-      ],
-      "images": [
-        { "url": "images/lusitania/viriato-portrait.jpg", "alt": "Retrato de Viriato, líder lusitano" },
-        { "url": "images/lusitania/emboscada-montana.jpg", "alt": "Emboscada lusitana en terreno montañoso" },
-        { "url": "images/lusitania/consejo-tribal.jpg", "alt": "Consejo de guerra entre jefes tribales" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/viriato-adventure",
-        "demo": "https://youtu.be/demo-viriato",
-        "download": "https://epic-games.viriato-game.com"
-      },
-      "status": "Lanzado",
-      "duration": "20 meses",
-      "team": "Equipo de 5 desarrolladores",
-      "region": "lusitania"
-    },
-    
-    "baetica": {
-      "title": "Comercio en Hispalis",
-      "subtitle": "Simulador económico del comercio en la Bética romana",
-      "description": "Simulador económico del comercio en la Bética romana",
-      "longDescription": "Un simulador económico profundo centrado en el comercio romano en la próspera provincia de la Bética. Los jugadores gestionan rutas comerciales, producción de aceite de oliva y exportación a todo el Imperio Romano.",
-      "technologies": ["Unreal Engine 5", "C++", "Economic AI", "Trade Route System", "Production Chains", "Market Simulation"],
-      "features": [
-        "Sistema económico complejo basado en recursos reales",
-        "Rutas comerciales desde Hispalis hasta Roma",
-        "Producción de aceite, vino y metales preciosos",
-        "Gestión de villas y latifundios romanos",
-        "Mercados dinámicos con fluctuación de precios",
-        "Eventos históricos que afectan el comercio"
-      ],
-      "images": [
-        { "url": "images/baetica/puerto-hispalis.jpg", "alt": "Puerto comercial de Hispalis (Sevilla)" },
-        { "url": "images/baetica/olivar-romano.jpg", "alt": "Plantación de olivos en villa romana" },
-        { "url": "images/baetica/anforas-aceite.jpg", "alt": "Ánforas de aceite listas para exportar" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/hispalis-economy",
-        "demo": "https://youtu.be/demo-hispalis",
-        "download": "https://gog.hispalis-trade.com"
-      },
-      "status": "Early Access",
-      "duration": "10 meses (en desarrollo)",
-      "team": "Desarrollo individual + economista consultor",
-      "region": "baetica"
-    },
-    
-    "baleares": {
-      "title": "Navegación Balear",
-      "subtitle": "Simulador naval de las rutas comerciales baleares",
-      "description": "Simulador naval de las rutas comerciales baleares",
-      "longDescription": "Un simulador naval especializado en la navegación mediterránea desde las Islas Baleares. Los jugadores gestionan flotas comerciales, exploran rutas marítimas y defienden sus barcos de piratas mientras transportan mercancías por todo el Mediterráneo.",
-      "technologies": ["Unreal Engine 5", "C++", "Naval Physics", "Weather Simulation", "Pirate AI", "Trade Networks"],
-      "features": [
-        "Física naval realista con vientos y corrientes",
-        "Sistema meteorológico que afecta la navegación",
-        "Rutas comerciales entre islas mediterráneas",
-        "Combate naval contra piratas y rivales",
-        "Gestión de flotas y tripulaciones",
-        "Exploración de rutas marítimas desconocidas"
-      ],
-      "images": [
-        { "url": "images/baleares/galera-romana.jpg", "alt": "Galera romana navegando entre islas" },
-        { "url": "images/baleares/puerto-palmaria.jpg", "alt": "Puerto de Palmaria (Palma de Mallorca)" },
-        { "url": "images/baleares/combate-piratas.jpg", "alt": "Combate naval contra piratas" }
-      ],
-      "links": {
-        "github": "https://github.com/tuusuario/baleares-naval",
-        "demo": "https://youtu.be/demo-baleares",
-        "documentation": "https://docs.mediterranean-trade.com"
-      },
-      "status": "Completado",
-      "duration": "8 meses",
-      "team": "Desarrollo individual",
-      "region": "baleares"
+    "metadata": {
+        "version": "1.1",
+        "lastUpdated": "2025-01-07",
+        "totalProjects": 6,
+        "categories": [
+            "RPG",
+            "RTS",
+            "Tactical",
+            "Action-Adventure",
+            "Economic",
+            "Naval Simulation"
+        ],
+        "regions": [
+            "gallaecia",
+            "tarraconensis",
+            "cartaginensis",
+            "lusitania",
+            "baetica",
+            "baleares"
+        ]
     }
-  },
-  
-  "metadata": {
-    "version": "1.1",
-    "lastUpdated": "2025-01-07",
-    "totalProjects": 6,
-    "categories": ["RPG", "RTS", "Tactical", "Action-Adventure", "Economic", "Naval Simulation"],
-    "regions": ["gallaecia", "tarraconensis", "cartaginensis", "lusitania", "baetica", "baleares"]
-  }
 }

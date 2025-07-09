@@ -1,4 +1,4 @@
-// ===== MAIN APPLICATION CONTROLLER - INICIALIZACIÓN CORREGIDA =====
+// ===== MAIN APPLICATION CONTROLLER - FIXED FOR JSON LOADING =====
 
 class PortfolioApp {
     constructor() {
@@ -15,6 +15,8 @@ class PortfolioApp {
     
     async init() {
         try {
+            console.log('PortfolioApp: Iniciando aplicación...');
+            
             // Show loading indicator
             this.showLoadingIndicator();
             
@@ -40,16 +42,15 @@ class PortfolioApp {
             this.isInitialized = true;
             this.performanceMetrics.loadTime = performance.now() - this.performanceMetrics.startTime;
             
-            console.log(`Portfolio app initialized in ${this.performanceMetrics.loadTime.toFixed(2)}ms`);
+            console.log(`PortfolioApp: Aplicación inicializada en ${this.performanceMetrics.loadTime.toFixed(2)}ms`);
             
         } catch (error) {
-            console.error('Failed to initialize portfolio app:', error);
+            console.error('PortfolioApp: Error inicializando aplicación:', error);
             this.handleInitializationError(error);
         }
     }
     
     showLoadingIndicator() {
-        // Create and show a subtle loading indicator
         const loader = document.createElement('div');
         loader.id = 'app-loader';
         loader.style.cssText = `
@@ -58,7 +59,7 @@ class PortfolioApp {
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--gold-primary, #D4AF37), var(--bronze, #CD7F32));
             z-index: 9999;
             animation: loadingProgress 2s ease-in-out;
         `;
@@ -89,13 +90,15 @@ class PortfolioApp {
     }
     
     async initializeManagers() {
-        console.log('Inicializando managers en orden de dependencia...');
+        console.log('PortfolioApp: Inicializando managers...');
         
         // 1. Navigation (no dependencies)
         if (typeof NavigationManager !== 'undefined') {
             this.managers.navigation = new NavigationManager();
             window.navigationManager = this.managers.navigation;
             console.log('✓ NavigationManager inicializado');
+        } else {
+            console.warn('NavigationManager no disponible');
         }
         
         // 2. Tooltip system (no dependencies)
@@ -103,79 +106,77 @@ class PortfolioApp {
             this.managers.tooltip = new TooltipManager();
             window.tooltipManager = this.managers.tooltip;
             console.log('✓ TooltipManager inicializado');
+        } else {
+            console.warn('TooltipManager no disponible');
         }
         
-        // 3. Modal system (no dependencies) - DEBE cargar JSON aquí
+        // 3. Modal system (DEBE cargar JSON aquí) - CRÍTICO
         if (typeof ModalManager !== 'undefined') {
+            console.log('PortfolioApp: Inicializando ModalManager...');
             this.managers.modal = new ModalManager();
             window.modalManager = this.managers.modal;
             
             // CRÍTICO: Esperar a que el modal manager cargue los datos del JSON
+            console.log('PortfolioApp: Esperando carga de datos JSON...');
             await this.waitForModalManagerInit();
-            console.log('✓ ModalManager inicializado con datos JSON');
+            console.log('✓ ModalManager inicializado con datos JSON cargados');
+        } else {
+            console.error('ModalManager no disponible - CRÍTICO');
+            throw new Error('ModalManager es requerido para la funcionalidad del portfolio');
         }
         
-        // 4. Map interactions (depends on modal with JSON data loaded)
+        // 4. Map interactions (depende de modal con datos JSON cargados)
         if (typeof MapInteractionManager !== 'undefined') {
+            console.log('PortfolioApp: Inicializando MapInteractionManager...');
             this.managers.mapInteractions = new MapInteractionManager();
             window.mapManager = this.managers.mapInteractions;
-            
-            // CRÍTICO: Esperar a que el map manager cargue los datos
-            await this.waitForMapManagerInit();
-            console.log('✓ MapInteractionManager inicializado con datos JSON');
+            console.log('✓ MapInteractionManager inicializado');
+        } else {
+            console.warn('MapInteractionManager no disponible');
         }
         
-        console.log('Todos los managers inicializados:', Object.keys(this.managers));
+        console.log('PortfolioApp: Todos los managers inicializados:', Object.keys(this.managers));
     }
     
     // Esperar a que el modal manager termine de cargar datos JSON
     async waitForModalManagerInit() {
-        const maxAttempts = 50; // 5 segundos máximo
+        const maxAttempts = 100; // 10 segundos máximo
         let attempts = 0;
         
         while (attempts < maxAttempts) {
-            if (this.managers.modal.projectsData) {
-                console.log('Modal manager tiene datos cargados');
+            // Verificar que el modal manager esté completamente inicializado
+            if (this.managers.modal && 
+                this.managers.modal.isDataLoaded && 
+                this.managers.modal.projectsData &&
+                Object.keys(this.managers.modal.projectsData).length > 0) {
+                
+                console.log('PortfolioApp: Modal manager tiene datos JSON cargados');
+                console.log('Proyectos disponibles:', Object.keys(this.managers.modal.projectsData));
                 return;
             }
             
-            console.log(`Esperando datos del modal manager... (${attempts + 1}/${maxAttempts})`);
+            if (attempts % 10 === 0) { // Log cada segundo
+                console.log(`PortfolioApp: Esperando datos JSON... (${attempts/10}s)`);
+            }
+            
             await new Promise(resolve => setTimeout(resolve, 100));
             attempts++;
         }
         
-        console.warn('Timeout esperando datos del modal manager');
-    }
-    
-    // Esperar a que el map manager termine de cargar datos JSON
-    async waitForMapManagerInit() {
-        const maxAttempts = 50; // 5 segundos máximo
-        let attempts = 0;
-        
-        while (attempts < maxAttempts) {
-            if (this.managers.mapInteractions.projectsData) {
-                console.log('Map manager tiene datos cargados');
-                return;
-            }
-            
-            console.log(`Esperando datos del map manager... (${attempts + 1}/${maxAttempts})`);
-            await new Promise(resolve => setTimeout(resolve, 100));
-            attempts++;
-        }
-        
-        console.warn('Timeout esperando datos del map manager');
+        console.error('PortfolioApp: TIMEOUT esperando datos JSON del modal manager');
+        throw new Error('No se pudieron cargar los datos de proyectos');
     }
     
     setupGlobalEvents() {
         // Global error handling
         window.addEventListener('error', (event) => {
-            console.error('Global error:', event.error);
+            console.error('PortfolioApp: Error global:', event.error);
             this.handleGlobalError(event.error);
         });
         
         // Unhandled promise rejections
         window.addEventListener('unhandledrejection', (event) => {
-            console.error('Unhandled promise rejection:', event.reason);
+            console.error('PortfolioApp: Promise rejection:', event.reason);
             this.handleGlobalError(event.reason);
         });
         
@@ -205,6 +206,8 @@ class PortfolioApp {
         window.addEventListener('beforeunload', () => {
             this.trackSessionEnd();
         });
+        
+        console.log('PortfolioApp: Event listeners globales configurados');
     }
     
     setupPerformanceOptimizations() {
@@ -219,6 +222,8 @@ class PortfolioApp {
         
         // Memory cleanup
         this.setupMemoryManagement();
+        
+        console.log('PortfolioApp: Optimizaciones de rendimiento configuradas');
     }
     
     setupScrollAnimations() {
@@ -231,7 +236,7 @@ class PortfolioApp {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
@@ -243,18 +248,22 @@ class PortfolioApp {
     }
     
     preloadCriticalResources() {
-        // Ya no precargar desde window.projectData, usar el sistema dinámico
-        console.log('Preload de recursos críticos completado');
+        // Precargar recursos críticos basándose en los datos JSON cargados
+        if (this.managers.modal?.projectsData) {
+            console.log('PortfolioApp: Precargando recursos para proyectos:', 
+                Object.keys(this.managers.modal.projectsData));
+        }
+        console.log('PortfolioApp: Preload de recursos críticos completado');
     }
     
     setupServiceWorker() {
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(registration => {
-                    console.log('Service Worker registered:', registration);
+                    console.log('PortfolioApp: Service Worker registrado:', registration);
                 })
                 .catch(error => {
-                    console.log('Service Worker registration failed:', error);
+                    console.log('PortfolioApp: Service Worker falló:', error);
                 });
         }
     }
@@ -278,6 +287,8 @@ class PortfolioApp {
         
         // Focus management
         this.setupFocusManagement();
+        
+        console.log('PortfolioApp: Características de accesibilidad configuradas');
     }
     
     createSkipLinks() {
@@ -301,11 +312,12 @@ class PortfolioApp {
                 top: -40px;
                 left: 6px;
                 color: white;
-                background: var(--bg-dark);
+                background: #2C1810;
                 padding: 8px;
                 text-decoration: none;
                 border-radius: 4px;
                 transition: top 0.3s;
+                border: 2px solid #CD7F32;
             }
             .skip-link:focus {
                 top: 6px;
@@ -369,6 +381,8 @@ class PortfolioApp {
         // Initialize any additional interactions
         this.setupKeyboardShortcuts();
         this.setupTouchGestures();
+        
+        console.log('PortfolioApp: Interacciones adicionales configuradas');
     }
     
     setupKeyboardShortcuts() {
@@ -418,10 +432,7 @@ class PortfolioApp {
     
     // Event Handlers
     handleGlobalError(error) {
-        // Log error for development
-        console.error('Portfolio app error:', error);
-        
-        // Show user-friendly error message
+        console.error('PortfolioApp: Error global:', error);
         this.showUserMessage('Ha ocurrido un error. Por favor, recarga la página.', 'error');
     }
     
@@ -432,17 +443,29 @@ class PortfolioApp {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: var(--bg-dark);
-            color: var(--text-light);
+            background: #2C1810;
+            color: #FFFFFF;
             padding: 2rem;
             border-radius: 8px;
             text-align: center;
             z-index: 10000;
+            border: 3px solid #CD7F32;
+            font-family: 'Cinzel', serif;
         `;
         errorContainer.innerHTML = `
-            <h2>Error de Inicialización</h2>
-            <p>No se pudo cargar el portfolio correctamente.</p>
-            <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem;">
+            <h2 style="color: #D4AF37; margin-bottom: 1rem;">Error de Inicialización</h2>
+            <p style="margin-bottom: 1rem;">No se pudo cargar el portfolio correctamente.</p>
+            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #CD7F32;">${error.message}</p>
+            <button onclick="location.reload()" style="
+                background: linear-gradient(135deg, #D4AF37, #B8941F);
+                color: #2C1810;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-family: 'Cinzel', serif;
+                font-weight: 600;
+            ">
                 Recargar Página
             </button>
         `;
@@ -450,15 +473,13 @@ class PortfolioApp {
     }
     
     handlePageHidden() {
-        // Pause any animations or heavy processes
         this.performanceMetrics.backgroundTime = performance.now();
     }
     
     handlePageVisible() {
-        // Resume animations or processes
         if (this.performanceMetrics.backgroundTime) {
             const backgroundDuration = performance.now() - this.performanceMetrics.backgroundTime;
-            console.log(`Page was in background for ${backgroundDuration.toFixed(2)}ms`);
+            console.log(`PortfolioApp: Página estuvo en background por ${backgroundDuration.toFixed(2)}ms`);
         }
     }
     
@@ -485,12 +506,20 @@ class PortfolioApp {
         const messageEl = document.createElement('div');
         messageEl.className = `user-message message-${type}`;
         messageEl.textContent = message;
+        
+        const typeColors = {
+            info: '#2C1810',
+            success: '#4CAF50',
+            warning: '#FF9800',
+            error: '#F44336'
+        };
+        
         messageEl.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--bg-secondary);
-            color: var(--text-light);
+            background: ${typeColors[type] || typeColors.info};
+            color: white;
             padding: 1rem;
             border-radius: 8px;
             z-index: 10000;
@@ -498,6 +527,8 @@ class PortfolioApp {
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            border: 2px solid #CD7F32;
         `;
         
         document.body.appendChild(messageEl);
@@ -521,8 +552,7 @@ class PortfolioApp {
     }
     
     cleanupMemory() {
-        // Remove unused event listeners
-        // Clear caches if they get too large
+        // Remove unused event listeners and clear caches
         if (this.managers.tooltip?.tooltipCache && 
             Object.keys(this.managers.tooltip.tooltipCache).length > 50) {
             this.managers.tooltip.tooltipCache = {};
@@ -531,8 +561,8 @@ class PortfolioApp {
     
     trackSessionEnd() {
         const sessionDuration = performance.now() - this.performanceMetrics.startTime;
-        console.log(`Session duration: ${(sessionDuration / 1000).toFixed(2)}s`);
-        console.log(`Interactions: ${this.performanceMetrics.interactionCount}`);
+        console.log(`PortfolioApp: Duración de sesión: ${(sessionDuration / 1000).toFixed(2)}s`);
+        console.log(`PortfolioApp: Interacciones: ${this.performanceMetrics.interactionCount}`);
     }
     
     // Public API
@@ -550,17 +580,33 @@ class PortfolioApp {
     
     // Método para recargar datos JSON durante desarrollo
     async reloadAllProjectData() {
-        console.log('Recargando todos los datos de proyectos...');
+        console.log('PortfolioApp: Recargando todos los datos de proyectos...');
         
         if (this.managers.modal) {
             await this.managers.modal.reloadProjectsData();
         }
         
-        if (this.managers.mapInteractions) {
-            await this.managers.mapInteractions.reloadProjectsData();
+        console.log('PortfolioApp: Datos recargados exitosamente');
+    }
+    
+    // Método de debug mejorado
+    debugInfo() {
+        console.log('=== PORTFOLIO APP DEBUG ===');
+        console.log('Initialized:', this.isInitialized);
+        console.log('Managers:', Object.keys(this.managers));
+        console.log('Performance:', this.performanceMetrics);
+        
+        if (this.managers.modal) {
+            console.log('Modal Manager Status:');
+            this.managers.modal.debugInfo();
         }
         
-        console.log('Todos los datos recargados exitosamente');
+        if (this.managers.mapInteractions) {
+            console.log('Map Manager Status:');
+            this.managers.mapInteractions.debugInfo();
+        }
+        
+        console.log('=== END DEBUG ===');
     }
 }
 
@@ -582,20 +628,20 @@ initApp();
 window.PortfolioApp = PortfolioApp;
 
 // Función global para debugging durante desarrollo
-window.debugProjects = async () => {
-    console.log('=== DEBUG PROJECT DATA ===');
-    
-    if (window.modalManager) {
-        console.log('Modal Manager projects:', window.modalManager.getAllProjects());
-    }
-    
-    if (window.mapManager) {
-        console.log('Map Manager projects:', window.mapManager.getAllProjects());
-    }
-    
+window.debugProjects = () => {
     if (window.portfolioApp) {
-        await window.portfolioApp.reloadAllProjectData();
+        window.portfolioApp.debugInfo();
+    } else {
+        console.log('PortfolioApp no inicializada aún');
     }
-    
-    console.log('=== END DEBUG ===');
+};
+
+// Función para recargar datos JSON manualmente
+window.reloadProjectData = async () => {
+    if (window.portfolioApp?.managers.modal) {
+        await window.portfolioApp.reloadAllProjectData();
+        console.log('Datos de proyectos recargados desde JSON');
+    } else {
+        console.log('ModalManager no disponible para recargar datos');
+    }
 };

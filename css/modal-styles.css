@@ -147,12 +147,16 @@
 .project-meta {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     gap: 20px;
     margin: 25px 0;
     padding: 20px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: var(--border-radius-md);
     border: 2px solid var(--bronze);
+    text-align: center;
 }
 
 .meta-item {
@@ -162,6 +166,7 @@
     color: var(--text-cream);
     font-size: 1rem;
     font-weight: 500;
+    text-align: center;
 }
 
 .meta-icon {
@@ -184,7 +189,7 @@
 }
 
 .status-completed,
-.status-lanzado {
+.status-launched {
     background: linear-gradient(135deg, #4CAF50, #45a049);
     color: white;
     border-color: #2E7D32;
@@ -295,6 +300,7 @@
 .btn-primary:hover {
     background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
     box-shadow: 0 8px 16px var(--glow-gold);
+    color: var(--black)
 }
 
 .btn-secondary:hover {
