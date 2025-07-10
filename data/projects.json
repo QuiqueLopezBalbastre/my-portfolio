@@ -181,8 +181,7 @@
                 "Contact page",
                 "Firebase conection"
             ],
-            "images": [
-            ],
+            "images": [],
             "links": {
                 "github": "https://github.com/QuiqueLopezBalbastre/Nexus"
             },
@@ -209,6 +208,14 @@
                 "Optimized performance for smooth VR gameplay"
             ],
             "images": [
+                {
+                    "url": "images/projects/Baleares/shooting.png",
+                    "alt": "Shooting targets"
+                },
+                {
+                    "url": "images/projects/Baleares/reloading.png",
+                    "alt": "Reloading the gun"
+                }
             ],
             "links": {
                 "github": "https://github.com/LeRayRC/Publikeishion",
