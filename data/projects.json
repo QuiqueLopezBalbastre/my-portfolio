@@ -1,48 +1,33 @@
 {
     "projects": {
         "gallaecia": {
-            "title": "RPG Celta: Gallaecia",
-            "subtitle": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
-            "description": "Aventura RPG ambientada en los pueblos celtas del noroeste hispano",
-            "longDescription": "Un RPG épico que sigue las tradiciones celtas de Gallaecia antes y durante la llegada de Roma. Los jugadores encarnan a un druida que debe preservar las tradiciones ancestrales mientras navega las complejas relaciones con las tribus locales y los invasores romanos.",
+            "title": "1944: The Greatest War",
+            "subtitle": "Input Restricted game",
+            "description": "",
+            "longDescription": "A top-down shooter where the player plays as a bomber whose mission is to destroy all enemy's tanks that are in the battle.",
             "technologies": [
-                "Unreal Engine 5",
-                "C++",
-                "Blueprints",
-                "Celtic Mythology System",
-                "Weather Magic",
-                "Tribe Relations AI"
+                "Unity",
+                "C#"
             ],
             "features": [
-                "Sistema de magia druídica basado en elementos naturales",
-                "Relaciones complejas entre tribus celtas y romanos",
-                "Mundo abierto inspirado en la Galicia antigua",
-                "Rituales sagrados en castros y bosques druídicos",
-                "Sistema de estaciones que afecta la magia y gameplay",
-                "Narrativa ramificada basada en decisiones morales"
+                "Restricted input"
             ],
             "images": [
                 {
-                    "url": "images/gallaecia/castro-celta.jpg",
-                    "alt": "Castro celta en las montañas gallegas"
+                    "url": "images/projects/Gallaecia/dropping_bomb.png",
+                    "alt": "Dropping a bomb"
                 },
                 {
-                    "url": "images/gallaecia/druida-ritual.jpg",
-                    "alt": "Ritual druídico en el bosque sagrado"
-                },
-                {
-                    "url": "images/gallaecia/guerreros-celtas.jpg",
-                    "alt": "Guerreros celtas defendiendo su territorio"
+                    "url": "images/projects/Gallaecia/explosion.png",
+                    "alt": "Destroying enemy's tanks"
                 }
             ],
             "links": {
-                "github": "https://github.com/tuusuario/gallaecia-rpg",
-                "demo": "https://youtu.be/demo-gallaecia-rpg",
-                "documentation": "https://docs.gallaecia-rpg.com"
+                "demo": "https://youtu.be/WMcdL2kkXE0"
             },
-            "status": "En Desarrollo",
-            "duration": "12 meses",
-            "team": "Desarrollo individual + historiador consultor",
+            "status": "Completed",
+            "duration": "2 weeks",
+            "team": "Desarrollo individual",
             "region": "gallaecia"
         },
         "tarraconensis": {
