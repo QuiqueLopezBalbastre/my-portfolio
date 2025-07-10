@@ -64,11 +64,19 @@
             "images": [
                 {
                     "url": "images/projects/Tarraconensis/ICON.png",
-                    "alt": "Legión romana marchando por Tarragona"
+                    "alt": "Game face"
                 },
                 {
-                    "url": "images/projects/Tarraconensis/TWITCH_POSTER.png",
-                    "alt": "Asedio romano a una ciudad ibérica"
+                    "url": "images/projects/Tarraconensis/sacrifice_table.jpg",
+                    "alt": "Dungeon room"
+                },
+                {
+                    "url": "images/projects/Tarraconensis/library.jpg",
+                    "alt": "Library bird shot image"
+                },
+                {
+                    "url": "images/projects/Tarraconensis/church.jpg",
+                    "alt": "Church cinematic view"
                 }
             ],
             "links": {
@@ -102,16 +110,12 @@
             ],
             "images": [
                 {
-                    "url": "images/cartaginensis/batalla-naval.jpg",
-                    "alt": "Batalla naval entre flotas romana y cartaginesa"
+                    "url": "images/projects/Cartaginensis/LUQUI.png",
+                    "alt": "Engine logo"
                 },
                 {
-                    "url": "images/cartaginensis/elefantes-guerra.jpg",
-                    "alt": "Elefantes de guerra cartagineses"
-                },
-                {
-                    "url": "images/cartaginensis/cartago-nova.jpg",
-                    "alt": "Asedio de Cartago Nova"
+                    "url": "images/projects/Cartaginensis/engine.png",
+                    "alt": "Engine showoff"
                 }
             ],
             "links": {
@@ -126,37 +130,29 @@
         },
         "lusitania": {
             "title": "Poopy Walk",
-            "subtitle": "Action-adventure sobre la resistencia lusitana contra Roma",
-            "description": "Action-adventure sobre la resistencia lusitana contra Roma",
-            "longDescription": "Un juego de acción y aventura que narra la épica historia de Viriato, el pastor que se convirtió en el terror de Roma. Combina combate táctico, sigilo y diplomacia tribal en la lucha por la independencia lusitana.",
+            "subtitle": "2D Platformer game",
+            "description": "2D Platformer game",
+            "longDescription": "Game Jam game made in 2024 for the Global Game Jam. A 2D platformer based on JetPack Joyride where the protagonist is pooping himself and needs to arrive to the toilet before running out of time.",
             "technologies": [
-                "Unreal Engine 5",
-                "C++",
-                "Guerrilla Warfare AI",
-                "Tribal Diplomacy",
-                "Stealth Mechanics",
-                "Historical Narrative"
+                "Unity",
+                "C#"
             ],
             "features": [
-                "Combate híbrido: combate directo y tácticas de guerrilla",
-                "Sistema de sigilo en terrenos montañosos",
-                "Diplomacia tribal para unir clanes lusitanos",
-                "Recreación de paisajes lusitanos históricos",
-                "Narrativa basada en fuentes históricas",
-                "Mecánicas de liderazgo y moral de tropas"
+                "Simple controls",
+                "Laughing experience"
             ],
             "images": [
                 {
-                    "url": "images/lusitania/viriato-portrait.jpg",
-                    "alt": "Retrato de Viriato, líder lusitano"
+                    "url": "images/projects/Lusitania/main_menu.png",
+                    "alt": "Game main menu."
                 },
                 {
-                    "url": "images/lusitania/emboscada-montana.jpg",
-                    "alt": "Emboscada lusitana en terreno montañoso"
+                    "url": "images/projects/Lusitania/clean_screen.png",
+                    "alt": "First game screen."
                 },
                 {
-                    "url": "images/lusitania/consejo-tribal.jpg",
-                    "alt": "Consejo de guerra entre jefes tribales"
+                    "url": "images/projects/Lusitania/dirty_screen.png",
+                    "alt": "The player just been hit by a flying poop."
                 }
             ],
             "links": {
@@ -186,18 +182,6 @@
                 "Firebase conection"
             ],
             "images": [
-                {
-                    "url": "images/baetica/puerto-hispalis.jpg",
-                    "alt": "Puerto comercial de Hispalis (Sevilla)"
-                },
-                {
-                    "url": "images/baetica/olivar-romano.jpg",
-                    "alt": "Plantación de olivos en villa romana"
-                },
-                {
-                    "url": "images/baetica/anforas-aceite.jpg",
-                    "alt": "Ánforas de aceite listas para exportar"
-                }
             ],
             "links": {
                 "github": "https://github.com/QuiqueLopezBalbastre/Nexus"
@@ -225,18 +209,6 @@
                 "Optimized performance for smooth VR gameplay"
             ],
             "images": [
-                {
-                    "url": "images/baleares/galera-romana.jpg",
-                    "alt": "Galera romana navegando entre islas"
-                },
-                {
-                    "url": "images/baleares/puerto-palmaria.jpg",
-                    "alt": "Puerto de Palmaria (Palma de Mallorca)"
-                },
-                {
-                    "url": "images/baleares/combate-piratas.jpg",
-                    "alt": "Combate naval contra piratas"
-                }
             ],
             "links": {
                 "github": "https://github.com/LeRayRC/Publikeishion",

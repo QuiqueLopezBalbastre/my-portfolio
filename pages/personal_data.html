@@ -1,23 +1,26 @@
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Castra Quique - Información Personal</title>
+    <link rel="icon" type="image/x-icon" href="../images/helmet_favicon.ico">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/tabula-styles.css">
+
 </head>
+
 <body>
     <a href="../index.html" class="back-button">← Regresar al Mapa</a>
-    
+
     <div class="tent-container">
         <header class="header">
             <h1>CASTRA QUIQUE</h1>
-            <p class="subtitle">Informes del General de Campaña</p>
+            <p class="subtitle">Legatus informatio</p>
             <div class="divider"></div>
         </header>
 
         <div class="command-interface">
-            <div class="candle"></div>
-            
             <!-- Botones de secciones -->
             <div class="section-buttons">
                 <button class="section-btn active" data-section="status">Status Militis</button>
@@ -25,7 +28,7 @@
                 <button class="section-btn" data-section="disciplinae">Disciplinae</button>
                 <button class="section-btn" data-section="strategiae">Strategiae</button>
             </div>
-
+            <br>
             <!-- Tablilla díptica -->
             <div class="tabula-diptica">
                 <div class="tabula-panel left">
@@ -33,12 +36,6 @@
                     <div class="tabula-content" id="left-content">
                         <!-- Contenido izquierdo -->
                     </div>
-                </div>
-
-                <div class="hinge">
-                    <div class="hinge-piece"></div>
-                    <div class="hinge-piece"></div>
-                    <div class="hinge-piece"></div>
                 </div>
 
                 <div class="tabula-panel right">
@@ -49,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="stylus"></div>
+
         </div>
     </div>
 
@@ -67,7 +64,7 @@
                 "right_content": {
                     "Focus Operandi": "Unreal Engine 5, experiencias AAA e indie",
                     "Missio Prima": "Crear experiencias interactivas únicas",
-                    "Regio": "Madrid, Hispania"
+                    "Regio": "Valencia, Spain"
                 }
             },
             "arma": {
@@ -164,7 +161,7 @@
             // Aplicar contenido con animación
             leftContent.innerHTML = leftHTML;
             rightContent.innerHTML = rightHTML;
-            
+
             leftContent.classList.add('content-fade-in');
             rightContent.classList.add('content-fade-in');
 
@@ -187,7 +184,7 @@
             renderContent(sectionKey);
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Cargar contenido inicial
             renderContent(currentSection);
 
@@ -199,15 +196,15 @@
             });
 
             // Efectos de ambiente mejorados
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', function (e) {
                 const mouseX = e.clientX / window.innerWidth;
                 const mouseY = e.clientY / window.innerHeight;
-                
+
                 const tabulae = document.querySelectorAll('.tabula-panel');
                 tabulae.forEach((tabula, index) => {
                     const moveX = (mouseX - 0.5) * 5;
                     const moveY = (mouseY - 0.5) * 2;
-                    
+
                     if (index === 0) {
                         tabula.style.transform = `perspective(1000px) rotateY(${-2 + moveX}deg) rotateX(${moveY}deg)`;
                     } else {
@@ -218,4 +215,5 @@
         });
     </script>
 </body>
+
 </html>

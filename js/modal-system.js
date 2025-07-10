@@ -273,33 +273,33 @@ class ModalManager {
         });
     }
     setupCarouselKeyboard(carouselId) {
-    document.addEventListener('keydown', (e) => {
-        if (!this.isOpen) return;
-        
-        const carousel = document.getElementById(carouselId);
-        if (!carousel) return;
-        
-        switch(e.key) {
-            case 'ArrowLeft':
-                e.preventDefault();
-                this.moveCarousel(carouselId, -1);
-                break;
-            case 'ArrowRight':
-                e.preventDefault();
-                this.moveCarousel(carouselId, 1);
-                break;
-            case 'Home':
-                e.preventDefault();
-                this.goToSlide(carouselId, 0);
-                break;
-            case 'End':
-                e.preventDefault();
-                const slides = carousel.querySelectorAll('.carousel-slide');
-                this.goToSlide(carouselId, slides.length - 1);
-                break;
-        }
-    });
-}
+        document.addEventListener('keydown', (e) => {
+            if (!this.isOpen) return;
+
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            switch (e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    this.moveCarousel(carouselId, -1);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    this.moveCarousel(carouselId, 1);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    this.goToSlide(carouselId, 0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    const slides = carousel.querySelectorAll('.carousel-slide');
+                    this.goToSlide(carouselId, slides.length - 1);
+                    break;
+            }
+        });
+    }
 
     setupCarouselTouch(carouselId) {
         const carousel = document.getElementById(carouselId);
@@ -371,20 +371,24 @@ class ModalManager {
 
     generateImageCarousel(images) {
         if (!images || images.length === 0) {
-            return ''; // No mostrar carrousel si no hay imágenes
+            return '';
         }
 
-        const carouselId = `carousel-${Date.now()}`; // ID único para cada carrousel
+        const carouselId = `carousel-${Date.now()}`;
 
-        return `
+        const carouselHTML = `
         <div class="project-section">
-            <h3>Galería del Proyecto</h3>
+            <h3>Project Gallery</h3>
             <div class="image-carousel" id="${carouselId}">
                 <div class="carousel-container">
                     <div class="carousel-track" id="${carouselId}-track">
                         ${images.map((image, index) => `
                             <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
-                                <img src="${image.url}" alt="${image.alt || 'Imagen del proyecto'}" loading="lazy">
+                                <img src="${image.url}" 
+                                     alt="${image.alt || 'Imagen del proyecto'}" 
+                                     loading="lazy"
+                                     onload="this.classList.add('loaded')"
+                                     onerror="console.error('Error loading image:', this.src)">
                                 <div class="image-caption">
                                     ${image.alt || `Imagen ${index + 1}`}
                                 </div>
@@ -415,6 +419,8 @@ class ModalManager {
             </div>
         </div>
     `;
+
+        return carouselHTML;
     }
 
     generateProjectHTML(project) {
@@ -650,7 +656,7 @@ class ModalManager {
     getStatusClass(status) {
         const statusMap = {
             'Completed': 'completed',
-            'Lauched': 'lanzado',
+            'Lauched': 'launched',
             'In Development': 'development',
             'Beta': 'beta',
             'Early Access': 'early-access',
