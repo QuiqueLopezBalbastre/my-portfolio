@@ -26,9 +26,6 @@ class PortfolioApp {
             // Setup global event listeners
             this.setupGlobalEvents();
             
-            // Performance optimizations
-            this.setupPerformanceOptimizations();
-            
             // Accessibility enhancements
             this.setupAccessibility();
             
@@ -254,18 +251,6 @@ class PortfolioApp {
                 Object.keys(this.managers.modal.projectsData));
         }
         console.log('PortfolioApp: Preload de recursos críticos completado');
-    }
-    
-    setupServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('PortfolioApp: Service Worker registrado:', registration);
-                })
-                .catch(error => {
-                    console.log('PortfolioApp: Service Worker falló:', error);
-                });
-        }
     }
     
     setupMemoryManagement() {

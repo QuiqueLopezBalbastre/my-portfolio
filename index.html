@@ -171,18 +171,20 @@
         <section id="contact">
             <div class="container">
                 <h2>Contact</h2>
-                <!-- <p class="subtitle">¿Interesado en colaborar? Hablemos sobre tu próximo proyecto</p> -->
                 <p class="subtitle">Want to collaborate? Let's talk about our next project</p>
 
                 <div class="contact-container">
                     <!-- Formulario de contacto -->
                     <div class="contact-form-section">
-                        <form class="contact-form contact-form-two-column" id="formulario-contacto">
+                        <!-- FORMULARIO CORREGIDO: Mantener las clases originales -->
+                        <form class="contact-form contact-form-two-column" id="formulario-contacto"
+                            action="https://formspree.io/f/mqabrago" method="POST">
+
                             <!-- Primera fila: Nombre y Email -->
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="nombre" class="required">Name</label>
-                                    <input type="text" id="nombre" name="nombre" placeholder="Your name" required>
+                                    <input type="text" id="nombre" name="name" placeholder="Your name" required>
                                 </div>
 
                                 <div class="form-group">
@@ -195,7 +197,7 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="asunto">Subject</label>
-                                    <input type="text" id="asunto" name="asunto" placeholder="Message subject">
+                                    <input type="text" id="asunto" name="subject" placeholder="Message subject">
                                 </div>
 
                                 <div class="form-group">
@@ -208,7 +210,7 @@
                             <div class="form-row form-row-full">
                                 <div class="form-group">
                                     <label for="mensaje" class="required">Message</label>
-                                    <textarea id="mensaje" name="mensaje" placeholder="Develop about the project..."
+                                    <textarea id="mensaje" name="message" placeholder="Develop about the project..."
                                         required></textarea>
                                 </div>
                             </div>
@@ -219,7 +221,8 @@
                             </div>
                         </form>
 
-                        <div id="mensaje-exito">
+                        <!-- Mensaje de éxito -->
+                        <div id="mensaje-exito" style="display: none;">
                             Message successfully sent! I will answer soon.
                         </div>
                     </div>
@@ -229,8 +232,8 @@
 
                     <!-- Redes sociales -->
                     <div class="social-section">
-                        <h3>Conecta Conmigo</h3>
-                        <p class="social-subtitle">Sígueme en mis redes sociales</p>
+                        <h3>Connect with me</h3>
+                        <p class="social-subtitle">Follow me on social media</p>
 
                         <div class="social-links">
                             <a href="mailto:quilobal@gmail.com" class="social-btn">

@@ -656,6 +656,7 @@ select:disabled {
     font-size: 1rem;
     margin-bottom: 30px;
     font-style: italic;
+    text-align: center;
 }
 
 /* Botones de redes sociales */
