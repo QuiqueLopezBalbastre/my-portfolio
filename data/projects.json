@@ -65,7 +65,7 @@
                 }
             ],
             "links": {
-                "video": "https://www.youtube.com/watch?v=qIu2EHMRd3A",
+                "video": "https://youtu.be/SuqeJ9jeXic",
                 "download": "https://store.steampowered.com/app/3719120/Inside_the_Crows_Nest/"
             },
             "status": "Beta",
@@ -109,7 +109,7 @@
                 "documentation": "https://calatayudbri.github.io/LUQUI-User-Guide/"
             },
             "status": "Completed",
-            "duration": "9 meses",
+            "duration": "9 months",
             "team": "Lucas Calatayud",
             "region": "cartaginensis"
         },
@@ -171,7 +171,7 @@
                 "github": "https://github.com/QuiqueLopezBalbastre/Nexus"
             },
             "status": "Early Access",
-            "duration": "3 meses",
+            "duration": "3 months",
             "team": "Individual development",
             "region": "baetica"
         },
@@ -207,7 +207,7 @@
                 "demo": "https://www.youtube.com/watch?v=ulkzy3r9zec&t=3s"
             },
             "status": "Completed",
-            "duration": "4 meses",
+            "duration": "4 months",
             "team": "Carlos García",
             "region": "baleares"
         }

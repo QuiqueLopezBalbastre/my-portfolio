@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quique López Balbastre - CV Programador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +24,7 @@
                 color: #000;
                 background: white;
             }
-            
+
             .container {
                 width: 100%;
                 max-width: none;
@@ -29,24 +32,25 @@
                 box-shadow: none;
                 border-radius: 0;
             }
-            
+
             .header {
                 background: #2c3e50 !important;
                 color: white !important;
                 -webkit-print-color-adjust: exact;
                 color-adjust: exact;
             }
-            
+
             .section {
                 page-break-inside: avoid;
                 margin-bottom: 25px;
             }
-            
-            .project, .education-item {
+
+            .project,
+            .education-item {
                 page-break-inside: avoid;
                 margin-bottom: 15px;
             }
-            
+
             .no-print {
                 display: none;
             }
@@ -69,7 +73,7 @@
             max-width: 210mm;
             margin: 20px auto;
             background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             overflow: hidden;
         }
@@ -115,8 +119,9 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 11pt;
+            vertical-align: middle;
         }
 
         .contact-item strong {
@@ -308,16 +313,16 @@
             .container {
                 margin: 10px;
             }
-            
+
             .skills-container,
             .certifications-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .languages-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -350,11 +355,13 @@
         }
     </style>
 </head>
+
 <body>
     <button class="print-button no-print" onclick="window.print()">📄 Generar PDF</button>
-    
+
     <div class="print-info no-print">
-        💡 Para generar el PDF: Haz clic en "Generar PDF" o presiona Ctrl+P (Cmd+P en Mac) y selecciona "Guardar como PDF"
+        💡 Para generar el PDF: Haz clic en "Generar PDF" o presiona Ctrl+P (Cmd+P en Mac) y selecciona "Guardar como
+        PDF"
     </div>
 
     <div class="container">
@@ -372,7 +379,8 @@
                 </div>
                 <div class="contact-item">
                     <span>💼</span>
-                    <span><strong>linkedin.com/in/quique-lopez-balbastre</strong></span>
+                    <span><a href="https://www.linkedin.com/in/quique-lopez-balbastre"><i class="fab fa-linkedin fa-xl"
+                                style="color: #0077B5"></i></a></span>
                 </div>
                 <div class="contact-item">
                     <span>📍</span>
@@ -398,8 +406,7 @@
                         <ul>
                             <li>C++</li>
                             <li>C#</li>
-                            <li>JavaScript</li>
-                            <li>HTML/CSS</li>
+                            <li>Python</li>
                         </ul>
                     </div>
                     <div class="skill-category">
@@ -424,66 +431,72 @@
 
             <section class="section">
                 <h3>🎮 Proyectos Destacados</h3>
-                
-                <div class="project">
-                    <h4>Portfolio Interactivo con Mapa Fantasy</h4>
-                    <p>Portfolio web personal con mapa interactivo estilo fantasy para mostrar proyectos. Incluye animaciones CSS, barras de progreso dinámicas y formulario de contacto funcional.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">SVG</span>
-                    </div>
-                    <a href="https://github.com/quiquelopezbalbastre/my-portfolio" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/my-portfolio</a>
-                </div>
 
                 <div class="project">
-                    <h4>Sistema de Gameplay en UE5</h4>
-                    <p>Desarrollo de mecánicas de juego en Unreal Engine 5 con sistemas de combate, inventario y progresión de personajes. Implementación en C++ con integración Blueprint.</p>
+                    <h4>Inside the Crow's Nest</h4>
+                    <p>Inside the Crow's Nest es un juego del género Survival Horror inspirado en los clásicos del
+                        género de la vieja escuela. Juegas como el Cazador, que despierta en una celda marcada con
+                        símbolos extraños, atrapado en un monasterio infestado de cultistas. Para escapar, debes
+                        sobrevivir a los horribles cultistas, descubrir oscuros secretos y resolver intrincados
+                        rompecabezas que bloquean tu huida.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">Unreal Engine 5</span>
                         <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Unreal Engine 5</span>
                         <span class="tech-tag">Blueprints</span>
+                        <span class="tech-tag">UI</span>
                     </div>
-                    <a href="https://github.com/quiquelopezbalbastre/gameplay-system" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/gameplay-system</a>
+                    <a href="https://store.steampowered.com/app/3719120/Inside_the_Crows_Nest/" class="project-link"><i
+                            class="fab fa-steam fa-2x" style="color: #000000"></i></a>
                 </div>
 
                 <div class="project">
-                    <h4>Prototipo Mobile Game</h4>
-                    <p>Desarrollo de prototipo para dispositivos móviles con controles táctiles optimizados, sistema de monetización y métricas de analytics integradas.</p>
+                    <h4>Motor gráfico 3D</h4>
+                    <p>Motor de renderizado 3D en C++ con un sistema avanzado de scripting con Python y capacidades
+                        multihilo.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">OpenGL</span>
+                        <span class="tech-tag">GLFW</span>
+                        <span class="tech-tag">GLM</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <a href="https://github.com/quiquelopezbalbastre/my-portfolio" target="_blank"
+                        rel="noopener noreferrer" class="project-link" title="Ver código en GitHub">
+                        <i class="fab fa-github fa-2x" style="color: #181717"></i>
+                    </a>
+                </div>
+
+                <div class="project">
+                    <h4>Poopy Walk</h4>
+                    <p>Juego creado en 2024 para la Global Game Jam. Un juego de plataformas en 2D basado en JetPack
+                        Joyride en el que el protagonista se está haciendo caca encima y necesita llegar al baño antes
+                        de que se acabe el tiempo.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Unity</span>
                         <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Mobile</span>
                     </div>
-                    <a href="https://github.com/quiquelopezbalbastre/mobile-prototype" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/mobile-prototype</a>
-                </div>
-
-                <div class="project">
-                    <h4>Herramienta de Diseño de Niveles</h4>
-                    <p>Editor personalizado para diseño de niveles con sistema de tiles, generación procedural de contenido y exportación automática a formatos de game engine.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Unity Editor</span>
-                        <span class="tech-tag">Tools</span>
-                    </div>
-                    <a href="https://github.com/quiquelopezbalbastre/level-editor" class="project-link">🔗 GitHub: github.com/quiquelopezbalbastre/level-editor</a>
+                    <a href="https://github.com/GoldsolacePVG/PoopyWalk" class="project-link">
+                        <i class="fab fa-github fa-2x" style="color: #181717"></i>
+                    </a>
                 </div>
             </section>
 
             <section class="section">
                 <h3>🎓 Educación</h3>
-                
+
                 <div class="education-item">
-                    <h4>HND in Computing - Programación Informática</h4>
-                    <div class="education-meta">ESAT - Escuela Superior de Arte y Tecnología, Valencia | Octubre 2021 - Junio 2025</div>
-                    <p>Especialización en desarrollo de videojuegos, programación de gameplay y diseño de sistemas. Enfoque en Unreal Engine 5 y C++.</p>
+                    <h4>HND in Computing - Programación de Videojuegos</h4>
+                    <div class="education-meta">ESAT - Escuela Superior de Arte y Tecnología, Valencia | Octubre 2021 -
+                        Junio 2025</div>
+                    <p>Especialización en desarrollo de videojuegos, programación de gameplay y diseño de sistemas.
+                        Enfoque en Unreal Engine 5 y C++.</p>
                 </div>
 
                 <div class="education-item">
                     <h4>Executive MBA</h4>
                     <div class="education-meta">Cámara de Comercio Valencia | Octubre 2022 - Septiembre 2023</div>
-                    <p>Formación en gestión empresarial y liderazgo de equipos técnicos. Enfoque en gestión de proyectos tecnológicos.</p>
+                    <p>Formación en gestión empresarial y liderazgo de equipos técnicos. Enfoque en gestión de proyectos
+                        tecnológicos.</p>
                 </div>
 
                 <div class="education-item">
@@ -498,11 +511,13 @@
                 <div class="certifications-grid">
                     <div class="cert-item">
                         <h4>Diseñador Narrativo de Videojuego</h4>
-                        <p>Certificación especializada en narrative design y storytelling interactivo para videojuegos.</p>
+                        <p>Certificación especializada en narrative design y storytelling interactivo para videojuegos.
+                        </p>
                     </div>
                     <div class="cert-item">
                         <h4>Agile Scrum Master</h4>
-                        <p>Metodologías ágiles para desarrollo de software y gestión eficiente de proyectos técnicos.</p>
+                        <p>Metodologías ágiles para desarrollo de software y gestión eficiente de proyectos técnicos.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -531,4 +546,5 @@
         </div>
     </div>
 </body>
+
 </html>
